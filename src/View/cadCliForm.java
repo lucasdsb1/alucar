@@ -292,6 +292,11 @@ public class cadCliForm extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
+        tableListaCli.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableListaCliMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tableListaCli);
 
         btnAtualizarListaCli.setText("Atualizar Lista");
@@ -509,6 +514,15 @@ public class cadCliForm extends javax.swing.JInternalFrame {
         jTabbedPane1.setSelectedIndex(0);
         
     }//GEN-LAST:event_btnDadosCompletosActionPerformed
+
+    private void tableListaCliMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableListaCliMouseClicked
+        /*if(evt.getClickCount() == 2) {
+            DefaultTableModel modelo = (DefaultTableModel) tableListaCli.getModel();
+            String line = modelo.getValueAt(tableListaCli.getSelectedRow(), 1).toString();
+            txtBuscarCli.setText(line);  
+        } CODE NOTE WORKING YET */ 
+        
+    }//GEN-LAST:event_tableListaCliMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
