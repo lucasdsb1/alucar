@@ -155,5 +155,41 @@ public class ClientesDAO {
         return cliente;
 
     }
+    
+    public boolean excluirCli(Clientes c) {
+        
+        boolean check = false;
+        
+        try {
+            
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/alucar?serverTimezone=UTC", "root", "usbw");
+        
+            PreparedStatement stmt = con.prepareStatement("delete from clientes where cpf = ?");
+            stmt.setString(1, c.getCpfCli());
+            stmt.execute();
+            con.close();
+            check = true;
+            
+        } catch (Exception e) {
+            
+            Object[] options = {"Mostre-me o erro detalhado", "Sair"};
+            int choice = JOptionPane.showOptionDialog(null, "Algo deu errado! Tente novamente mais tarde.", "Erro!", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[1]);
+
+            if (choice == 0) {
+
+                JOptionPane.showMessageDialog(null, e.getMessage());
+
+            } else {
+
+                System.exit(0);
+
+            }
+            
+        }
+   
+        return check;
+        
+    }
 
 }
