@@ -71,8 +71,8 @@ public class cadCliForm extends javax.swing.JInternalFrame {
         btnAtualizarListaCli = new javax.swing.JButton();
         txtBuscarCli = new javax.swing.JTextField();
         btnBuscarCli = new javax.swing.JButton();
-        btnDadosCompletos = new javax.swing.JButton();
         lblbusca = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
@@ -267,7 +267,7 @@ public class cadCliForm extends javax.swing.JInternalFrame {
                     .addComponent(btnLimpar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSairCad)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Cadastro", tabCadastro);
@@ -313,35 +313,32 @@ public class cadCliForm extends javax.swing.JInternalFrame {
             }
         });
 
-        btnDadosCompletos.setText("Dados completos");
-        btnDadosCompletos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDadosCompletosActionPerformed(evt);
-            }
-        });
-
         lblbusca.setText(" Buscar por CPF:");
+
+        jLabel1.setText("Dica: Um clique exibe o CPF, dois cliques exibe os dados completos.");
 
         javax.swing.GroupLayout tabListaCliLayout = new javax.swing.GroupLayout(tabListaCli);
         tabListaCli.setLayout(tabListaCliLayout);
         tabListaCliLayout.setHorizontalGroup(
             tabListaCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tabListaCliLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 454, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(tabListaCliLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(tabListaCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(tabListaCliLayout.createSequentialGroup()
-                        .addComponent(lblbusca)
+                        .addGroup(tabListaCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(tabListaCliLayout.createSequentialGroup()
+                                .addComponent(lblbusca)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(txtBuscarCli))
                         .addGap(18, 18, 18)
-                        .addComponent(btnDadosCompletos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(txtBuscarCli))
-                .addGap(18, 18, 18)
-                .addGroup(tabListaCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnBuscarCli, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnAtualizarListaCli, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(tabListaCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnAtualizarListaCli, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
+                            .addComponent(btnBuscarCli, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(tabListaCliLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 454, Short.MAX_VALUE)
         );
         tabListaCliLayout.setVerticalGroup(
             tabListaCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -350,12 +347,13 @@ public class cadCliForm extends javax.swing.JInternalFrame {
                 .addGap(11, 11, 11)
                 .addGroup(tabListaCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblbusca)
-                    .addComponent(btnDadosCompletos)
                     .addComponent(btnAtualizarListaCli))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(tabListaCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtBuscarCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscarCli))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
                 .addContainerGap())
         );
 
@@ -504,23 +502,30 @@ public class cadCliForm extends javax.swing.JInternalFrame {
         txtCidadeCad.setText(null);
         cmbEstadoCivil.setSelectedItem("Selecione:");
         cmbSexoCad.setSelectedItem("Selecione:");
+        btnExcluiCli.setEnabled(false);
+        btnAtualizarCli.setEnabled(false);
+        btnCadastrar.setEnabled(true);
         
     }//GEN-LAST:event_btnLimparActionPerformed
 
-    private void btnDadosCompletosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDadosCompletosActionPerformed
-        
-        recebeBuscaCli(txtBuscarCli.getText());
-        
-        jTabbedPane1.setSelectedIndex(0);
-        
-    }//GEN-LAST:event_btnDadosCompletosActionPerformed
-
     private void tableListaCliMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableListaCliMouseClicked
-        /*if(evt.getClickCount() == 2) {
-            DefaultTableModel modelo = (DefaultTableModel) tableListaCli.getModel();
-            String line = modelo.getValueAt(tableListaCli.getSelectedRow(), 1).toString();
-            txtBuscarCli.setText(line);  
-        } CODE NOTE WORKING YET */ 
+        
+        DefaultTableModel modelo = (DefaultTableModel) tableListaCli.getModel();
+        String line = modelo.getValueAt(tableListaCli.getSelectedRow(), 1).toString();
+        
+        if(evt.getClickCount() == 2) {
+            
+            recebeBuscaCli(line);
+            jTabbedPane1.setSelectedIndex(0);
+            btnExcluiCli.setEnabled(true);
+            btnAtualizarCli.setEnabled(true);
+            btnCadastrar.setEnabled(false);
+            
+        } else if (evt.getClickCount() == 1) {
+            
+            txtBuscarCli.setText(line);
+            
+        }
         
     }//GEN-LAST:event_tableListaCliMouseClicked
 
@@ -531,12 +536,12 @@ public class cadCliForm extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnBuscarCli;
     private javax.swing.JButton btnCadastrar;
-    private javax.swing.JButton btnDadosCompletos;
     private javax.swing.JButton btnExcluiCli;
     private javax.swing.JButton btnLimpar;
     private javax.swing.JButton btnSairCad;
     private javax.swing.JComboBox<String> cmbEstadoCivil;
     private javax.swing.JComboBox<String> cmbSexoCad;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lblCPF;
