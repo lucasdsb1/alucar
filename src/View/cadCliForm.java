@@ -153,6 +153,11 @@ public class cadCliForm extends javax.swing.JInternalFrame {
 
         btnAtualizarCli.setText("Atualizar Cliente");
         btnAtualizarCli.setEnabled(false);
+        btnAtualizarCli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtualizarCliActionPerformed(evt);
+            }
+        });
 
         btnExcluiCli.setText("Excluir Cliente");
         btnExcluiCli.setEnabled(false);
@@ -488,6 +493,7 @@ public class cadCliForm extends javax.swing.JInternalFrame {
             btnExcluiCli.setEnabled(true);
             btnAtualizarCli.setEnabled(true);
             btnCadastrar.setEnabled(false);
+            txtCpfCad.setEnabled(false);
 
         }
 
@@ -522,6 +528,7 @@ public class cadCliForm extends javax.swing.JInternalFrame {
             btnExcluiCli.setEnabled(true);
             btnAtualizarCli.setEnabled(true);
             btnCadastrar.setEnabled(false);
+            txtCpfCad.setEnabled(false);
 
         } else if (evt.getClickCount() == 1) {
 
@@ -541,23 +548,56 @@ public class cadCliForm extends javax.swing.JInternalFrame {
         if (choice == JOptionPane.YES_OPTION) {
 
             c.setCpfCli(txtCpfCad.getText());
-            edao.excluirCli(c);
-            txtNomeCad.setText(null);
-            txtEnderecoCad.setText(null);
-            txtDataCad.setText(null);
-            txtCpfCad.setText(null);
-            txtRGCad.setText(null);
-            txtUFCad.setText(null);
-            txtCidadeCad.setText(null);
-            cmbEstadoCivil.setSelectedItem("Selecione:");
-            cmbSexoCad.setSelectedItem("Selecione:");
-            btnExcluiCli.setEnabled(false);
-            btnAtualizarCli.setEnabled(false);
-            btnCadastrar.setEnabled(true);
-            
-            JOptionPane.showMessageDialog(null, "Cliente excluido com sucesso!");
+
+            if (edao.excluirCli(c)) {
+
+                JOptionPane.showMessageDialog(null, "Cliente excluido com sucesso!");
+
+            }
+
+        txtNomeCad.setText(null);
+        txtEnderecoCad.setText(null);
+        txtDataCad.setText(null);
+        txtCpfCad.setText(null);
+        txtRGCad.setText(null);
+        txtUFCad.setText(null);
+        txtCidadeCad.setText(null);
+        cmbEstadoCivil.setSelectedItem("Selecione:");
+        cmbSexoCad.setSelectedItem("Selecione:");
+        btnExcluiCli.setEnabled(false);
+        btnAtualizarCli.setEnabled(false);
+        btnCadastrar.setEnabled(true);
 
     }//GEN-LAST:event_btnExcluiCliActionPerformed
+    }
+
+    private void btnAtualizarCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarCliActionPerformed
+
+        Clientes c = new Clientes();
+        ClientesDAO adao = new ClientesDAO();
+
+        int choice = JOptionPane.showConfirmDialog(null, "Deseja realmente alterar?", "Alteração", JOptionPane.YES_NO_OPTION);
+
+        if (choice == JOptionPane.YES_OPTION) {
+
+            c.setCpfCli(txtCpfCad.getText());
+
+            c.setNomeCli(txtNomeCad.getText());
+            c.setEnderecoCli(txtEnderecoCad.getText());
+            c.setDataCli(txtDataCad.getText());
+            c.setRgCli(txtRGCad.getText());
+            c.setUfCli(txtUFCad.getText());
+            c.setCidadeCli(txtCidadeCad.getText());
+            c.setEstadocivilCli(cmbEstadoCivil.getSelectedItem().toString());
+            c.setSexoCli(cmbSexoCad.getSelectedItem().toString());
+
+            if (adao.alterarCli(c)) {
+
+                JOptionPane.showMessageDialog(null, "Cliente atualizado com sucesso!");
+
+            }
+
+    }//GEN-LAST:event_btnAtualizarCliActionPerformed
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAtualizarCli;

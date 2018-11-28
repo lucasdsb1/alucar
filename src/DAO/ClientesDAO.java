@@ -191,5 +191,49 @@ public class ClientesDAO {
         return check;
         
     }
+    
+    public boolean alterarCli (Clientes c) {
+        
+        boolean check = false;
+        
+        try {
+            
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/alucar?serverTimezone=UTC", "root", "usbw");
+            
+            PreparedStatement stmt = con.prepareStatement("update clientes set nome = ?, endereco = ?, dataNasc = ?, sexo = ?, estadocivil = ?, rg = ?, uf = ?, cidade = ? where cpf = ?");
+            stmt.setString(1, c.getNomeCli());
+            stmt.setString(2, c.getEnderecoCli());
+            stmt.setString(3, c.getDataCli());
+            stmt.setString(4, c.getSexoCli());
+            stmt.setString(5, c.getEstadocivilCli());
+            stmt.setString(6, c.getRgCli());
+            stmt.setString(7, c.getUfCli());
+            stmt.setString(8, c.getCidadeCli());
+            stmt.setString(9, c.getCpfCli());
+            stmt.execute();
+            con.close();
+            check = true;
+            
+        } catch (Exception e) {
+            
+            Object[] options = {"Mostre-me o erro detalhado", "Sair"};
+            int choice = JOptionPane.showOptionDialog(null, "Algo deu errado! Tente novamente mais tarde.", "Erro!", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[1]);
+
+            if (choice == 0) {
+
+                JOptionPane.showMessageDialog(null, e.getMessage());
+
+            } else {
+
+                System.exit(0);
+
+            }
+            
+        }
+        
+        return check;
+        
+    }
 
 }
