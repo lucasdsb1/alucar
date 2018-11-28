@@ -141,7 +141,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="2" name="C:\Users\l_dsb\OneDrive\Documentos\NetBeansProjects\Alucar\Images\__user_login_icon_307830.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="&lt;html&gt;&#xa;Powered by MotoDeveloper Soft LTDA.&#xa;&lt;br&gt;All rights reserved. &#xa9;&lt;/br&gt;&#xa;&lt;br&gt;Version 0.1.9 DEVELOPER PRE-ALPHA&lt;/br&gt;&#xa;&lt;br&gt;ldsb1@ifal.edu.br&lt;/br&gt;&#xa;&lt;br&gt;cleidon.vsi@gmail.com&lt;/br&gt;&#xa;&lt;/html&gt;"/>
+        <Property name="text" type="java.lang.String" value="&lt;html&gt;&#xa;Powered by MotoDeveloper Soft LTDA.&#xa;&lt;br&gt;All rights reserved. &#xa9;&lt;/br&gt;&#xa;&lt;br&gt;Version 0.2.2 DEVELOPER PRE-ALPHA&lt;/br&gt;&#xa;&lt;br&gt;ldsb1@ifal.edu.br&lt;/br&gt;&#xa;&lt;br&gt;cleidon.vsi@gmail.com&lt;/br&gt;&#xa;&lt;/html&gt;"/>
       </Properties>
     </Component>
   </SubComponents>

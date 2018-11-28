@@ -479,22 +479,18 @@ public class cadCliForm extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnBuscarCliActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-
+        
         String CPF = JOptionPane.showInputDialog("Digite o CPF que deseja buscar: ");
 
         recebeBuscaCli(CPF);
 
-        if (txtNomeCad.getText().isEmpty()) {
-
-            JOptionPane.showMessageDialog(null, "Cliente não encontrado!");
-
-        } else {
+        if (!txtNomeCad.getText().isEmpty()) {
 
             btnExcluiCli.setEnabled(true);
             btnAtualizarCli.setEnabled(true);
             btnCadastrar.setEnabled(false);
             txtCpfCad.setEnabled(false);
-
+            
         }
 
     }//GEN-LAST:event_btnBuscarActionPerformed
