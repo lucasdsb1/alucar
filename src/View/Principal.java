@@ -7,6 +7,7 @@ package View;
 
 import javax.swing.JOptionPane;
 import static View.cadCliForm.instanciaCadCli;
+import static View.veiculosForm.instanciaVeiculo;
 import javax.swing.JDesktopPane;
 
 /**
@@ -169,7 +170,17 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCarActionPerformed
-        // TODO add your handling code here:
+        
+        if (instanciaVeiculo == false) {
+            
+            veiculosForm form = new veiculosForm();
+            desktopPane.add(form);
+            form.setPosicao();
+            form.setVisible(true);
+            instanciaVeiculo = true;
+            
+        } 
+        
     }//GEN-LAST:event_btnAddCarActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed

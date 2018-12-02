@@ -276,7 +276,7 @@ public class cadCliForm extends javax.swing.JInternalFrame {
                     .addComponent(btnLimpar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSairCad)
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Gerencia de clientes", tabCrudCadastro);
@@ -290,7 +290,7 @@ public class cadCliForm extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Nome", "CPF", "Idade"
+                "Nome", "CPF", "Data de Nascimento"
             }
         ) {
             boolean[] canEdit = new boolean [] {

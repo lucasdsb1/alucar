@@ -15,3 +15,14 @@ rg integer,
 uf varchar(2),
 cidade varchar(20),
 cod_contrato integer);
+
+create table veiculo (
+Placa varchar(10) primary key not null,
+Renavam bigint,
+AnoFab varchar(4),
+Quilometragem integer,
+avariado varchar(3),
+cod_contrato integer,
+nome varchar (90),
+motorizacao varchar (3)
+);
