@@ -35,9 +35,7 @@ public class Principal extends javax.swing.JFrame {
         desktopPane = new javax.swing.JDesktopPane();
         internalProcedimentos = new javax.swing.JInternalFrame();
         btnAddCar = new javax.swing.JButton();
-        btnDeleteCar = new javax.swing.JButton();
         btnAluguel = new javax.swing.JButton();
-        btnDevolução = new javax.swing.JButton();
         btnCadCli = new javax.swing.JButton();
         btnSair = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
@@ -67,7 +65,7 @@ public class Principal extends javax.swing.JFrame {
         internalProcedimentos.setVisible(true);
 
         btnAddCar.setIcon(new javax.swing.ImageIcon("C:\\Users\\l_dsb\\OneDrive\\Documentos\\NetBeansProjects\\Alucar\\Images\\if_car_add_35817.png")); // NOI18N
-        btnAddCar.setText("ADICIONAR VEÍCULO");
+        btnAddCar.setText("VEÍCULOS");
         btnAddCar.setToolTipText("");
         btnAddCar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnAddCar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -78,20 +76,10 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        btnDeleteCar.setIcon(new javax.swing.ImageIcon("C:\\Users\\l_dsb\\OneDrive\\Documentos\\NetBeansProjects\\Alucar\\Images\\if_car_delete_35818.png")); // NOI18N
-        btnDeleteCar.setText("EXCLUIR VEÍCULO");
-        btnDeleteCar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnDeleteCar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-
         btnAluguel.setIcon(new javax.swing.ImageIcon("C:\\Users\\l_dsb\\OneDrive\\Documentos\\NetBeansProjects\\Alucar\\Images\\if_3_3319636.png")); // NOI18N
-        btnAluguel.setText("REALIZAR ALUGUEL");
+        btnAluguel.setText("CONTRATOS");
         btnAluguel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnAluguel.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-
-        btnDevolução.setIcon(new javax.swing.ImageIcon("C:\\Users\\l_dsb\\OneDrive\\Documentos\\NetBeansProjects\\Alucar\\Images\\if_attachment_back_67250.png")); // NOI18N
-        btnDevolução.setText("REALIZAR DEVOLUÇÃO");
-        btnDevolução.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnDevolução.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
         btnCadCli.setIcon(new javax.swing.ImageIcon("C:\\Users\\l_dsb\\OneDrive\\Documentos\\NetBeansProjects\\Alucar\\Images\\if_LinkedIn_UI-08_2335587.png")); // NOI18N
         btnCadCli.setText("CLIENTES");
@@ -119,14 +107,12 @@ public class Principal extends javax.swing.JFrame {
             internalProcedimentosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(internalProcedimentosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(internalProcedimentosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(btnCadCli, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
-                    .addComponent(btnDevolução, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
-                    .addComponent(btnAluguel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnDeleteCar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnAddCar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(internalProcedimentosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnAddCar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnAluguel, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+                    .addComponent(btnCadCli, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnSair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap())
         );
         internalProcedimentosLayout.setVerticalGroup(
             internalProcedimentosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -134,20 +120,16 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addComponent(btnAddCar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnDeleteCar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addComponent(btnAluguel, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnDevolução, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnCadCli, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         desktopPane.add(internalProcedimentos);
-        internalProcedimentos.setBounds(20, 20, 220, 400);
+        internalProcedimentos.setBounds(20, 20, 190, 280);
 
         admMenu.setText("Administrador");
 
@@ -269,8 +251,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton btnAddCar;
     private javax.swing.JButton btnAluguel;
     private javax.swing.JButton btnCadCli;
-    private javax.swing.JButton btnDeleteCar;
-    private javax.swing.JButton btnDevolução;
     private javax.swing.JButton btnSair;
     private javax.swing.JMenuItem cadUsuMenuItem;
     private javax.swing.JMenuItem chamarSuportetMenuItem;

@@ -497,18 +497,7 @@ public class cadCliForm extends javax.swing.JInternalFrame {
 
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
 
-        txtNomeCad.setText(null);
-        txtEnderecoCad.setText(null);
-        txtDataCad.setText(null);
-        txtCpfCad.setText(null);
-        txtRGCad.setText(null);
-        txtUFCad.setText(null);
-        txtCidadeCad.setText(null);
-        cmbEstadoCivil.setSelectedItem("Selecione:");
-        cmbSexoCad.setSelectedItem("Selecione:");
-        btnExcluiCli.setEnabled(false);
-        btnAtualizarCli.setEnabled(false);
-        btnCadastrar.setEnabled(true);
+        limparcampos();
 
     }//GEN-LAST:event_btnLimparActionPerformed
 
@@ -551,18 +540,7 @@ public class cadCliForm extends javax.swing.JInternalFrame {
 
             }
 
-        txtNomeCad.setText(null);
-        txtEnderecoCad.setText(null);
-        txtDataCad.setText(null);
-        txtCpfCad.setText(null);
-        txtRGCad.setText(null);
-        txtUFCad.setText(null);
-        txtCidadeCad.setText(null);
-        cmbEstadoCivil.setSelectedItem("Selecione:");
-        cmbSexoCad.setSelectedItem("Selecione:");
-        btnExcluiCli.setEnabled(false);
-        btnAtualizarCli.setEnabled(false);
-        btnCadastrar.setEnabled(true);
+        limparcampos();
 
     }//GEN-LAST:event_btnExcluiCliActionPerformed
     }
@@ -674,6 +652,24 @@ public class cadCliForm extends javax.swing.JInternalFrame {
 
         }
 
+    }
+    
+    public void limparcampos () {
+        
+        txtNomeCad.setText(null);
+        txtEnderecoCad.setText(null);
+        txtDataCad.setText(null);
+        txtCpfCad.setText(null);
+        txtRGCad.setText(null);
+        txtUFCad.setText(null);
+        txtCidadeCad.setText(null);
+        cmbEstadoCivil.setSelectedItem("Selecione:");
+        cmbSexoCad.setSelectedItem("Selecione:");
+        btnExcluiCli.setEnabled(false);
+        btnAtualizarCli.setEnabled(false);
+        btnCadastrar.setEnabled(true);
+        txtCpfCad.setEnabled(true);
+        
     }
 
 }

@@ -104,24 +104,22 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="20" y="20" width="220" height="400"/>
+              <AbsoluteConstraints x="20" y="20" width="190" height="280"/>
             </Constraint>
           </Constraints>
 
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="btnCadCli" pref="182" max="32767" attributes="0"/>
-                          <Component id="btnDevolução" alignment="0" pref="182" max="32767" attributes="0"/>
-                          <Component id="btnAluguel" alignment="0" max="32767" attributes="0"/>
-                          <Component id="btnDeleteCar" alignment="0" max="32767" attributes="0"/>
-                          <Component id="btnAddCar" alignment="0" max="32767" attributes="0"/>
-                          <Component id="btnSair" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="btnAddCar" max="32767" attributes="0"/>
+                          <Component id="btnAluguel" alignment="0" pref="154" max="32767" attributes="0"/>
+                          <Component id="btnCadCli" max="32767" attributes="0"/>
+                          <Component id="btnSair" alignment="0" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="12" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -131,16 +129,12 @@
                       <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                       <Component id="btnAddCar" min="-2" pref="42" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btnDeleteCar" min="-2" pref="42" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnAluguel" min="-2" pref="42" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btnDevolução" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnCadCli" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnSair" min="-2" pref="40" max="-2" attributes="0"/>
-                      <EmptySpace pref="15" max="32767" attributes="0"/>
+                      <EmptySpace pref="13" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -151,7 +145,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="2" name="C:\Users\l_dsb\OneDrive\Documentos\NetBeansProjects\Alucar\Images\if_car_add_35817.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="ADICIONAR VE&#xcd;CULO"/>
+                <Property name="text" type="java.lang.String" value="VE&#xcd;CULOS"/>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
@@ -163,32 +157,12 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddCarActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="btnDeleteCar">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\l_dsb\OneDrive\Documentos\NetBeansProjects\Alucar\Images\if_car_delete_35818.png"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="EXCLUIR VE&#xcd;CULO"/>
-                <Property name="horizontalAlignment" type="int" value="2"/>
-                <Property name="horizontalTextPosition" type="int" value="4"/>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JButton" name="btnAluguel">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="2" name="C:\Users\l_dsb\OneDrive\Documentos\NetBeansProjects\Alucar\Images\if_3_3319636.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="REALIZAR ALUGUEL"/>
-                <Property name="horizontalAlignment" type="int" value="2"/>
-                <Property name="horizontalTextPosition" type="int" value="4"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="btnDevolu&#xe7;&#xe3;o">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\l_dsb\OneDrive\Documentos\NetBeansProjects\Alucar\Images\if_attachment_back_67250.png"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="REALIZAR DEVOLU&#xc7;&#xc3;O"/>
+                <Property name="text" type="java.lang.String" value="CONTRATOS"/>
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
               </Properties>
