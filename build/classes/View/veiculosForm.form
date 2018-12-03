@@ -59,7 +59,7 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel1" max="32767" attributes="0"/>
+                          <Component id="lblFoto" max="32767" attributes="0"/>
                           <Component id="btnBuscarPlaca" max="32767" attributes="0"/>
                           <Component id="btnSair" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
@@ -72,15 +72,13 @@
                               <Component id="btnCadastrar" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="txtQuilometragem" max="32767" attributes="0"/>
-                                      <Component id="lblPlaca" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtPlaca" alignment="1" max="32767" attributes="0"/>
-                                      <Component id="lblRenavam" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtRenavam" alignment="1" pref="125" max="32767" attributes="0"/>
-                                  </Group>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="lblPlaca" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtPlaca" alignment="1" pref="125" max="32767" attributes="0"/>
+                                  <Component id="lblRenavam" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblQuilometragem" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtRenavam" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtQuilometragem" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -103,9 +101,9 @@
                                       </Group>
                                   </Group>
                                   <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="txtContrato" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="lblContrato" alignment="0" max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="lblContrato" max="32767" attributes="0"/>
+                                          <Component id="txtContrato" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
@@ -141,9 +139,9 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtRenavam" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cmbAvariado" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtAno" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtRenavam" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -156,8 +154,8 @@
                           <Component id="txtContrato" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" pref="121" max="-2" attributes="0"/>
-                      <EmptySpace pref="18" max="32767" attributes="0"/>
+                      <Component id="lblFoto" min="-2" pref="121" max="-2" attributes="0"/>
+                      <EmptySpace pref="22" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnLimpar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnExcluir" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -176,9 +174,6 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value=" Placa:"/>
               </Properties>
-              <AccessibilityProperties>
-                <Property name="AccessibleContext.accessibleName" type="java.lang.String" value=" Placa:"/>
-              </AccessibilityProperties>
             </Component>
             <Component class="javax.swing.JFormattedTextField" name="txtPlaca">
               <Properties>
@@ -191,17 +186,13 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Buscar Placa"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuscarPlacaActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="lblRenavam">
               <Properties>
                 <Property name="text" type="java.lang.String" value=" Renavam:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JFormattedTextField" name="txtRenavam">
-              <Properties>
-                <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
-                  <Format format="###########" subtype="-1" type="5"/>
-                </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblModelo">
@@ -227,6 +218,9 @@
                   </StringArray>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cmbModeloItemStateChanged"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
@@ -277,13 +271,6 @@
                 <Property name="text" type="java.lang.String" value=" Quilometragem:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JFormattedTextField" name="txtQuilometragem">
-              <Properties>
-                <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
-                  <Format format="##########" subtype="-1" type="5"/>
-                </Property>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JLabel" name="lblAno">
               <Properties>
                 <Property name="text" type="java.lang.String" value=" Ano de fabrica&#xe7;&#xe3;o:"/>
@@ -296,7 +283,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel1">
+            <Component class="javax.swing.JLabel" name="lblFoto">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -317,33 +304,46 @@
                 <Property name="text" type="java.lang.String" value="Limpar Campos"/>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLimparActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnExcluir">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Excluir"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExcluirActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnAtualizar">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Atualizar"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAtualizarActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnCadastrar">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Cadastrar"/>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JFormattedTextField" name="txtContrato">
-              <Properties>
-                <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
-                  <Format format="##########" subtype="-1" type="5"/>
-                </Property>
-              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCadastrarActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="lblContrato">
               <Properties>
                 <Property name="text" type="java.lang.String" value=" C&#xf3;digo de contrato:"/>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtRenavam">
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtQuilometragem">
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtContrato">
             </Component>
           </SubComponents>
         </Container>
@@ -360,13 +360,45 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jScrollPane1" alignment="0" pref="403" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="lblDica" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="txtBuscaPlaca" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtBuscar" min="-2" pref="242" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="btnAtualizarLista" max="32767" attributes="0"/>
+                                  <Component id="btnBuscarLista" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jScrollPane1" min="-2" pref="349" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="79" max="32767" attributes="0"/>
+                      <EmptySpace pref="10" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txtBuscaPlaca" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnAtualizarLista" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="btnBuscarLista" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                      <Component id="lblDica" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -388,9 +420,45 @@
                     </Property>
                     <Property name="toolTipText" type="java.lang.String" value=""/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tableListaVeiculosMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
+            <Component class="javax.swing.JLabel" name="txtBuscaPlaca">
+              <Properties>
+                <Property name="text" type="java.lang.String" value=" Buscar pela PLACA:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblDica">
+              <Properties>
+                <Property name="text" type="java.lang.String" value=" Dica: Um clique exibe a PLACA, dois cliques exibe os dados completos."/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnBuscarLista">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Buscar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuscarListaActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnAtualizarLista">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Atualizar Lista"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAtualizarListaActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JFormattedTextField" name="txtBuscar">
+              <Properties>
+                <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+                  <Format format="UUU####" subtype="-1" type="5"/>
+                </Property>
+              </Properties>
+            </Component>
           </SubComponents>
         </Container>
       </SubComponents>

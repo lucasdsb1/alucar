@@ -540,10 +540,12 @@ public class cadCliForm extends javax.swing.JInternalFrame {
 
             }
 
-        limparcampos();
-
+            limparcampos();
+        
+        }
+        
     }//GEN-LAST:event_btnExcluiCliActionPerformed
-    }
+
 
     private void btnAtualizarCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarCliActionPerformed
 
@@ -570,9 +572,11 @@ public class cadCliForm extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(null, "Cliente atualizado com sucesso!");
 
             }
+            
+        }
 
     }//GEN-LAST:event_btnAtualizarCliActionPerformed
-    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAtualizarCli;
     private javax.swing.JButton btnAtualizarListaCli;

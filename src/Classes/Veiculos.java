@@ -9,9 +9,9 @@ package Classes;
 public class Veiculos {
     
     private String placa;
-    private int renavam;
+    private long renavam;
     private String anoFab;
-    private String quilometragem;
+    private long quilometragem;
     private String avariado;
     private String modelo;
     private String motorizacao;
@@ -33,14 +33,14 @@ public class Veiculos {
     /**
      * @return the renavam
      */
-    public int getRenavam() {
+    public long getRenavam() {
         return renavam;
     }
 
     /**
      * @param renavam the renavam to set
      */
-    public void setRenavam(int renavam) {
+    public void setRenavam(long renavam) {
         this.renavam = renavam;
     }
 
@@ -61,14 +61,14 @@ public class Veiculos {
     /**
      * @return the quilometragem
      */
-    public String getQuilometragem() {
+    public long getQuilometragem() {
         return quilometragem;
     }
 
     /**
      * @param quilometragem the quilometragem to set
      */
-    public void setQuilometragem(String quilometragem) {
+    public void setQuilometragem(long quilometragem) {
         this.quilometragem = quilometragem;
     }
 
