@@ -5,6 +5,7 @@
  */
 package DAO;
 
+import Classes.VeiculoUsado;
 import Classes.Veiculos;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -63,7 +64,7 @@ public class VeiculosDAO {
 
     }
 
-    public boolean cadastraVei(Veiculos v) {
+    public boolean cadastraVei(VeiculoUsado v) {
 
         boolean check = false;
 
@@ -106,9 +107,9 @@ public class VeiculosDAO {
 
     }
     
-    public List<Veiculos> buscaVei(String placa) {
+    public List<VeiculoUsado> buscaVei(String placa) {
         
-        List<Veiculos> veiculo = new ArrayList<>();
+        List<VeiculoUsado> veiculo = new ArrayList<>();
 
         try {
 
@@ -120,7 +121,7 @@ public class VeiculosDAO {
 
             while (rs.next()) {
 
-                Veiculos vei = new Veiculos();
+                VeiculoUsado vei = new VeiculoUsado();
 
                 vei.setPlaca(rs.getString("placa"));
                 vei.setRenavam(rs.getLong("renavam"));
@@ -191,7 +192,7 @@ public class VeiculosDAO {
         
     }
     
-    public boolean alterarVei (Veiculos v) {
+    public boolean alterarVei (VeiculoUsado v) {
         
         boolean check = false;
         

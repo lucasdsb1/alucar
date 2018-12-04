@@ -5,6 +5,7 @@
  */
 package View;
 
+import Classes.VeiculoUsado;
 import Classes.Veiculos;
 import DAO.VeiculosDAO;
 import java.awt.Dimension;
@@ -24,8 +25,8 @@ public class veiculosForm extends javax.swing.JInternalFrame {
      */
     public veiculosForm() {
         initComponents();
-        readListaVei();   
-        lblFoto.setIcon(null);
+        readListaVei();
+        lblFoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/oie_401942oYTgxgbD.png")));
     }
     
     public static boolean instanciaVeiculo = false;
@@ -403,8 +404,8 @@ public class veiculosForm extends javax.swing.JInternalFrame {
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         
-        Veiculos v = new Veiculos();
         VeiculosDAO cdao = new VeiculosDAO();
+        VeiculoUsado vu = new VeiculoUsado();
 
         if (txtPlaca.getText().isEmpty() || txtRenavam.getText().isEmpty() || txtAno.getText().isEmpty()) {
 
@@ -412,37 +413,37 @@ public class veiculosForm extends javax.swing.JInternalFrame {
 
         } else {
 
-            v.setPlaca(txtPlaca.getText());
+            vu.setPlaca(txtPlaca.getText());
 
             if (!cmbModelo.getSelectedItem().equals("Selecione:")) {
 
-                v.setModelo(cmbModelo.getSelectedItem().toString());
+                vu.setModelo(cmbModelo.getSelectedItem().toString());
 
             }
 
-            v.setRenavam(Long.parseLong(txtRenavam.getText()));
+            vu.setRenavam(Long.parseLong(txtRenavam.getText()));
 
             if (!cmbMotorizacao.getSelectedItem().equals("Selecione:")) {
 
-                v.setMotorizacao(cmbMotorizacao.getSelectedItem().toString());
+                vu.setMotorizacao(cmbMotorizacao.getSelectedItem().toString());
 
             }
 
-            v.setAnoFab(txtAno.getText());
+            vu.setAnoFab(txtAno.getText());
 
             if (!cmbAvariado.getSelectedItem().equals("Selecione:")) {
 
-                v.setAvariado(cmbAvariado.getSelectedItem().toString());
+                vu.setAvariado(cmbAvariado.getSelectedItem().toString());
 
             }
 
             if (!txtQuilometragem.getText().equals("")) {
 
-                v.setQuilometragem(Long.parseLong(txtQuilometragem.getText()));
+                vu.setQuilometragem(Long.parseLong(txtQuilometragem.getText()));
 
             }
             
-            if (cdao.cadastraVei(v) == true) {
+            if (cdao.cadastraVei(vu) == true) {
 
                 JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
 
@@ -546,22 +547,23 @@ public class veiculosForm extends javax.swing.JInternalFrame {
 
     private void btnAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarActionPerformed
 
-        Veiculos v = new Veiculos();
         VeiculosDAO adao = new VeiculosDAO();
+        VeiculoUsado vu = new VeiculoUsado();
+
 
         int choice = JOptionPane.showConfirmDialog(null, "Deseja realmente alterar?", "Alteração", JOptionPane.YES_NO_OPTION);
 
         if (choice == JOptionPane.YES_OPTION) {
 
-            v.setPlaca(txtPlaca.getText());
-            v.setAnoFab(txtAno.getText());
-            v.setQuilometragem(Long.parseLong(txtQuilometragem.getText()));
-            v.setAvariado(cmbAvariado.getSelectedItem().toString());
-            v.setMotorizacao(cmbMotorizacao.getSelectedItem().toString());
-            v.setModelo(cmbModelo.getSelectedItem().toString());
+            vu.setPlaca(txtPlaca.getText());
+            vu.setAnoFab(txtAno.getText());
+            vu.setQuilometragem(Long.parseLong(txtQuilometragem.getText()));
+            vu.setAvariado(cmbAvariado.getSelectedItem().toString());
+            vu.setMotorizacao(cmbMotorizacao.getSelectedItem().toString());
+            vu.setModelo(cmbModelo.getSelectedItem().toString());
 
-            if (adao.alterarVei(v)) {
-
+            if (adao.alterarVei(vu) == true) {
+                
                 JOptionPane.showMessageDialog(null, "Veículo atualizado com sucesso!");
 
             }
@@ -574,7 +576,7 @@ public class veiculosForm extends javax.swing.JInternalFrame {
         
         if (cmbModelo.getSelectedItem().equals("Selecione:")) {
             
-            lblFoto.setIcon(null);
+            lblFoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/oie_401942oYTgxgbD.png")));
             
         } else if (cmbModelo.getSelectedItem().equals("Palio")) {
             
@@ -592,7 +594,27 @@ public class veiculosForm extends javax.swing.JInternalFrame {
             
             lblFoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/oie_transparent (1).png")));
             
-        }        
+        } else if (cmbModelo.getSelectedItem().equals("Onix")) {
+            
+            lblFoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/oie_19ytcHrrWbLX.png")));
+            
+        } else if (cmbModelo.getSelectedItem().equals("Virtus")) {
+            
+            lblFoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/oie_vW4d9KAg1hBQ.png")));
+            
+        } else if (cmbModelo.getSelectedItem().equals("Gol")) {
+            
+            lblFoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/oie_1FTFRgOTVAMe.png")));
+            
+        } else if (cmbModelo.getSelectedItem().equals("Fluence")) {
+            
+            lblFoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/fluence.png")));
+            
+        } else if (cmbModelo.getSelectedItem().equals("Captur")) {
+            
+            lblFoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/oie_crGBzVLUhnyU.png")));
+            
+        }
     }//GEN-LAST:event_cmbModeloItemStateChanged
 
 
@@ -660,7 +682,8 @@ public class veiculosForm extends javax.swing.JInternalFrame {
 
         VeiculosDAO bdao = new VeiculosDAO();
 
-        for (Veiculos v : bdao.buscaVei(Placa)) {
+
+        for (VeiculoUsado v : bdao.buscaVei(Placa)) {
 
             txtPlaca.setText(v.getPlaca());
             txtRenavam.setText(Long.toString(v.getRenavam()));

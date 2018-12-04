@@ -11,8 +11,6 @@ public class Veiculos {
     private String placa;
     private long renavam;
     private String anoFab;
-    private long quilometragem;
-    private String avariado;
     private String modelo;
     private String motorizacao;
 
@@ -56,34 +54,6 @@ public class Veiculos {
      */
     public void setAnoFab(String anoFab) {
         this.anoFab = anoFab;
-    }
-
-    /**
-     * @return the quilometragem
-     */
-    public long getQuilometragem() {
-        return quilometragem;
-    }
-
-    /**
-     * @param quilometragem the quilometragem to set
-     */
-    public void setQuilometragem(long quilometragem) {
-        this.quilometragem = quilometragem;
-    }
-
-    /**
-     * @return the avariado
-     */
-    public String getAvariado() {
-        return avariado;
-    }
-
-    /**
-     * @param avariado the avariado to set
-     */
-    public void setAvariado(String avariado) {
-        this.avariado = avariado;
     }
 
     /**
