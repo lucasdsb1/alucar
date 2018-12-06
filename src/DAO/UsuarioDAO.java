@@ -1,12 +1,12 @@
 package DAO;
 
-import Classes.Usuarios;
+import Classes.Usuario;
 import java.sql.*;
 import javax.swing.JOptionPane;
 
-public class UsuariosDAO {
+public class UsuarioDAO {
 
-    public boolean fazerLogin(Usuarios u) {
+    public boolean fazerLogin(Usuario u) {
 
         boolean check = false;
 

@@ -9,7 +9,7 @@ package Classes;
  *
  * @author l_dsb
  */
-public class Clientes {
+public class Cliente {
 
     private String nomeCli;
     private String enderecoCli;

@@ -1,9 +1,9 @@
 
 package Classes;
 
-import DAO.UsuariosDAO;
+import DAO.UsuarioDAO;
 
-public class Usuarios {
+public class Usuario {
     
     private int id;
     private String login;

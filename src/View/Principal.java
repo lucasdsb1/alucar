@@ -5,6 +5,7 @@
  */
 package View;
 
+import static View.aluguelForm.instanciaContratos;
 import javax.swing.JOptionPane;
 import static View.cadCliForm.instanciaCadCli;
 import static View.veiculosForm.instanciaVeiculo;
@@ -50,7 +51,6 @@ public class Principal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("AluCar");
         setMinimumSize(new java.awt.Dimension(800, 700));
-        setResizable(false);
         addWindowStateListener(new java.awt.event.WindowStateListener() {
             public void windowStateChanged(java.awt.event.WindowEvent evt) {
                 formWindowStateChanged(evt);
@@ -81,6 +81,11 @@ public class Principal extends javax.swing.JFrame {
         btnAluguel.setText("CONTRATOS");
         btnAluguel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnAluguel.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnAluguel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAluguelActionPerformed(evt);
+            }
+        });
 
         btnCadCli.setIcon(new javax.swing.ImageIcon("C:\\Users\\l_dsb\\OneDrive\\Documentos\\NetBeansProjects\\Alucar\\Images\\if_LinkedIn_UI-08_2335587.png")); // NOI18N
         btnCadCli.setText("CLIENTES");
@@ -219,6 +224,20 @@ public class Principal extends javax.swing.JFrame {
         }*/
         
     }//GEN-LAST:event_formWindowStateChanged
+
+    private void btnAluguelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAluguelActionPerformed
+        
+        if (instanciaContratos == false) {
+            
+            aluguelForm form = new aluguelForm();
+            desktopPane.add(form);
+            form.setPosicao();
+            form.setVisible(true);
+            instanciaContratos = true;
+            
+        } 
+        
+    }//GEN-LAST:event_btnAluguelActionPerformed
 
     /**
      * @param args the command line arguments

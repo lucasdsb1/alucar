@@ -5,8 +5,8 @@
  */
 package View;
 
-import Classes.Clientes;
-import DAO.ClientesDAO;
+import Classes.Cliente;
+import DAO.ClienteDAO;
 import java.awt.Dimension;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -391,8 +391,8 @@ public class cadCliForm extends javax.swing.JInternalFrame {
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
 
-        Clientes c = new Clientes();
-        ClientesDAO cdao = new ClientesDAO();
+        Cliente c = new Cliente();
+        ClienteDAO dao = new ClienteDAO();
 
         if (txtNomeCad.getText().isEmpty() || txtCpfCad.getText().isEmpty() || txtDataCad.getText().equals("  /  /    ")) {
 
@@ -442,7 +442,7 @@ public class cadCliForm extends javax.swing.JInternalFrame {
 
             }
 
-            if (cdao.cadastraCli(c) == true) {
+            if (dao.insertIntoDB(c) == true) {
 
                 JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
 
@@ -525,8 +525,8 @@ public class cadCliForm extends javax.swing.JInternalFrame {
 
     private void btnExcluiCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluiCliActionPerformed
 
-        Clientes c = new Clientes();
-        ClientesDAO edao = new ClientesDAO();
+        Cliente c = new Cliente();
+        ClienteDAO dao = new ClienteDAO();
 
         int choice = JOptionPane.showConfirmDialog(null, "Deseja realmente excluir?", "Exclusão", JOptionPane.YES_NO_OPTION);
 
@@ -534,7 +534,7 @@ public class cadCliForm extends javax.swing.JInternalFrame {
 
             c.setCpfCli(txtCpfCad.getText());
 
-            if (edao.excluirCli(c)) {
+            if (dao.deleteFromDB(c)) {
 
                 JOptionPane.showMessageDialog(null, "Cliente excluido com sucesso!");
 
@@ -549,8 +549,8 @@ public class cadCliForm extends javax.swing.JInternalFrame {
 
     private void btnAtualizarCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarCliActionPerformed
 
-        Clientes c = new Clientes();
-        ClientesDAO adao = new ClientesDAO();
+        Cliente c = new Cliente();
+        ClienteDAO dao = new ClienteDAO();
 
         int choice = JOptionPane.showConfirmDialog(null, "Deseja realmente alterar?", "Alteração", JOptionPane.YES_NO_OPTION);
 
@@ -567,7 +567,7 @@ public class cadCliForm extends javax.swing.JInternalFrame {
             c.setEstadocivilCli(cmbEstadoCivil.getSelectedItem().toString());
             c.setSexoCli(cmbSexoCad.getSelectedItem().toString());
 
-            if (adao.alterarCli(c)) {
+            if (dao.alterIntoDB(c)) {
 
                 JOptionPane.showMessageDialog(null, "Cliente atualizado com sucesso!");
 
@@ -625,9 +625,9 @@ public class cadCliForm extends javax.swing.JInternalFrame {
 
         DefaultTableModel modelo = (DefaultTableModel) tableListaCli.getModel();
         modelo.setNumRows(0);
-        ClientesDAO cdao = new ClientesDAO();
+        ClienteDAO dao = new ClienteDAO();
 
-        for (Clientes c : cdao.listaCli()) {
+        for (Cliente c : dao.listIntoDB()) {
 
             modelo.addRow(new Object[]{
                 c.getNomeCli(),
@@ -640,9 +640,9 @@ public class cadCliForm extends javax.swing.JInternalFrame {
 
     public void recebeBuscaCli(String CPF) {
 
-        ClientesDAO bdao = new ClientesDAO();
+        ClienteDAO dao = new ClienteDAO();
 
-        for (Clientes c : bdao.buscaCli(CPF)) {
+        for (Cliente c : dao.searchIntoDB(CPF)) {
 
             txtNomeCad.setText(c.getNomeCli());
             txtEnderecoCad.setText(c.getEnderecoCli());

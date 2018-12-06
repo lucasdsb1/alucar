@@ -6,8 +6,8 @@
 package View;
 
 import Classes.VeiculoUsado;
-import Classes.Veiculos;
-import DAO.VeiculosDAO;
+import Classes.Veiculo;
+import DAO.VeiculoDAO;
 import java.awt.Dimension;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -404,7 +404,7 @@ public class veiculosForm extends javax.swing.JInternalFrame {
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         
-        VeiculosDAO cdao = new VeiculosDAO();
+        VeiculoDAO dao = new VeiculoDAO();
         VeiculoUsado vu = new VeiculoUsado();
 
         if (txtPlaca.getText().isEmpty() || txtRenavam.getText().isEmpty() || txtAno.getText().isEmpty()) {
@@ -443,7 +443,7 @@ public class veiculosForm extends javax.swing.JInternalFrame {
 
             }
             
-            if (cdao.cadastraVei(vu) == true) {
+            if (dao.insertIntoDB(vu) == true) {
 
                 JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
 
@@ -524,8 +524,8 @@ public class veiculosForm extends javax.swing.JInternalFrame {
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         
-        Veiculos v = new Veiculos();
-        VeiculosDAO edao = new VeiculosDAO();
+        VeiculoUsado v = new VeiculoUsado();
+        VeiculoDAO dao = new VeiculoDAO();
 
         int choice = JOptionPane.showConfirmDialog(null, "Deseja realmente excluir?", "Exclusão", JOptionPane.YES_NO_OPTION);
 
@@ -533,7 +533,7 @@ public class veiculosForm extends javax.swing.JInternalFrame {
 
             v.setPlaca(txtPlaca.getText());
 
-            if (edao.excluirVei(v)) {
+            if (dao.deleteFromDB(v)) {
 
                 JOptionPane.showMessageDialog(null, "Veículo excluido com sucesso!");
 
@@ -547,7 +547,7 @@ public class veiculosForm extends javax.swing.JInternalFrame {
 
     private void btnAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarActionPerformed
 
-        VeiculosDAO adao = new VeiculosDAO();
+        VeiculoDAO dao = new VeiculoDAO();
         VeiculoUsado vu = new VeiculoUsado();
 
 
@@ -562,7 +562,7 @@ public class veiculosForm extends javax.swing.JInternalFrame {
             vu.setMotorizacao(cmbMotorizacao.getSelectedItem().toString());
             vu.setModelo(cmbModelo.getSelectedItem().toString());
 
-            if (adao.alterarVei(vu) == true) {
+            if (dao.alterIntoDB(vu) == true) {
                 
                 JOptionPane.showMessageDialog(null, "Veículo atualizado com sucesso!");
 
@@ -665,9 +665,9 @@ public class veiculosForm extends javax.swing.JInternalFrame {
 
         DefaultTableModel modelo = (DefaultTableModel) tableListaVeiculos.getModel();
         modelo.setNumRows(0);
-        VeiculosDAO vdao = new VeiculosDAO();
+        VeiculoDAO dao = new VeiculoDAO();
 
-        for (Veiculos v : vdao.listaVei()) {
+        for (Veiculo v : dao.listIntoDB()) {
 
             modelo.addRow(new Object[]{
                 v.getModelo(),
@@ -680,10 +680,10 @@ public class veiculosForm extends javax.swing.JInternalFrame {
     
     public void recebeBuscaVei(String Placa) {
 
-        VeiculosDAO bdao = new VeiculosDAO();
+        VeiculoDAO dao = new VeiculoDAO();
 
 
-        for (VeiculoUsado v : bdao.buscaVei(Placa)) {
+        for (VeiculoUsado v : dao.searchIntoDB(Placa)) {
 
             txtPlaca.setText(v.getPlaca());
             txtRenavam.setText(Long.toString(v.getRenavam()));

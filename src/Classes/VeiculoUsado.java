@@ -9,7 +9,7 @@ package Classes;
  *
  * @author l_dsb
  */
-public class VeiculoUsado extends Veiculos {
+public class VeiculoUsado extends Veiculo {
     
     private long quilometragem;
     private String avariado;

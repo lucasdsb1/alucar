@@ -5,8 +5,8 @@
  */
 package View;
 
-import Classes.Usuarios;
-import DAO.UsuariosDAO;
+import Classes.Usuario;
+import DAO.UsuarioDAO;
 import javax.swing.JOptionPane;
 
 /**
@@ -76,7 +76,7 @@ public class loginForm extends javax.swing.JFrame {
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\l_dsb\\OneDrive\\Documentos\\NetBeansProjects\\Alucar\\Images\\__user_login_icon_307830.png")); // NOI18N
-        jLabel1.setText("<html>\nPowered by MotoDeveloper Soft LTDA.\n<br>All rights reserved. ©</br>\n<br>Version 0.2.2 DEVELOPER PRE-ALPHA</br>\n<br>ldsb1@ifal.edu.br</br>\n<br>cleidon.vsi@gmail.com</br>\n</html>");
+        jLabel1.setText("<html>\nPowered by Cigano Soft LTDA.\n<br>All rights reserved. ©</br>\n<br>Version 0.2.1 DEVELOPER ALPHA</br>\n<br>ldsb1@ifal.edu.br</br>\n<br>cleidon.vsi@gmail.com</br>\n</html>");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -141,8 +141,8 @@ public class loginForm extends javax.swing.JFrame {
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
 
-        Usuarios u = new Usuarios();
-        UsuariosDAO dao = new UsuariosDAO();
+        Usuario u = new Usuario();
+        UsuarioDAO dao = new UsuarioDAO();
 
         u.setLogin(txtUsuario.getText());
         u.setSenha(String.valueOf(txtSenha.getPassword()));

@@ -26,3 +26,23 @@ cod_contrato integer,
 nome varchar (90),
 motorizacao varchar (3)
 );
+
+create table tipo_aluguel (
+cod_tipo integer primary key not null auto_increment,
+nome_tipo varchar(60)
+)
+
+create table aluguel (
+cod_contrato integer primary key not_null auto_increment,
+placa varchar(10),
+cpf varchar(11),
+inicio_contrato varchar(10),
+fim_contrato varchar(10),
+cod_tipo integer,
+constraint fk_placa foreign key(placa) references veiculo(placa),
+constraint fk_cpf foreign key(cpf) references clientes(cpf),
+constraint fk_tipo foreign key(cod_tipo) references tipo_aluguel(cod_tipo)
+);
+
+alter table clientes add constraint fk_cod_contrato foreign key(cod_contrato) references aluguel(cod_contrato);
+alter table veiculo add constraint fk_cod_contrato_vei foreign key(cod_contrato) references aluguel(cod_contrato);

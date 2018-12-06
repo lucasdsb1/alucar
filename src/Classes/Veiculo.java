@@ -6,7 +6,7 @@
 package Classes;
 
 
-public class Veiculos {
+public class Veiculo {
     
     private String placa;
     private long renavam;
