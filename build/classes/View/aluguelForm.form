@@ -56,6 +56,7 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="btnSelecionarVei" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="txtCodContrato" alignment="0" min="-2" pref="130" max="-2" attributes="0"/>
@@ -72,11 +73,10 @@
                                       <Component id="lblTipo" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
-                                  <Component id="cmbTipo" pref="140" max="32767" attributes="0"/>
+                                  <Component id="cmbTipo" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Component id="btnBuscarContrato" max="32767" attributes="0"/>
-                          <Component id="btnSair" max="32767" attributes="0"/>
                           <Component id="txtNome" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
@@ -85,33 +85,50 @@
                                   <Component id="cmbModelo" alignment="1" min="-2" pref="130" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="lblMotorizacao" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="cmbMotorizacao" alignment="1" min="-2" pref="133" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblMotorizacao" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cmbMotorizacao" min="-2" pref="133" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="txtPlaca" max="32767" attributes="0"/>
                                   <Group type="102" attributes="0">
                                       <Component id="lblPlaca" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
-                                  <Component id="txtPlaca" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="lblDataInicio" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
-                                      <Component id="lblFimContrato" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="btnSair" alignment="0" max="32767" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="txtInicioContrato" min="-2" pref="130" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="txtFimContrato" min="-2" pref="133" max="-2" attributes="0"/>
+                                      <Component id="btnAtualizarContrato" min="-2" pref="130" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="btnContrato" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="btnLimpar" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="btnSimularValor" alignment="1" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="txtDias" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtValor" alignment="0" max="32767" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="lblContrato" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblDias" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblValorDesconto" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="0" pref="11" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Component id="txtDesconto" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                              <Component id="lblFoto" min="-2" pref="246" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -138,32 +155,56 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="lblNome" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txtNome" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="txtNome" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblVeiculo" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblMotorizacao" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblPlaca" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="cmbModelo" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cmbMotorizacao" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="txtPlaca" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="btnSelecionarVei" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="lblDias" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="txtDias" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="lblContrato" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="txtValor" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="lblValorDesconto" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="txtDesconto" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="lblFoto" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblVeiculo" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblMotorizacao" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblPlaca" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnAtualizarContrato" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnContrato" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnSimularValor" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="cmbModelo" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cmbMotorizacao" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtPlaca" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnSair" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnLimpar" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblDataInicio" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblFimContrato" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtInicioContrato" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtFimContrato" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="177" max="32767" attributes="0"/>
-                      <Component id="btnSair" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace pref="27" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -189,7 +230,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txtCodContrato">
               <Properties>
-                <Property name="enabled" type="boolean" value="false"/>
+                <Property name="editable" type="boolean" value="false"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblCPF">
@@ -212,7 +253,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txtNome">
               <Properties>
-                <Property name="enabled" type="boolean" value="false"/>
+                <Property name="editable" type="boolean" value="false"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblVeiculo">
@@ -237,6 +278,9 @@
                   </StringArray>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cmbModeloItemStateChanged"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
@@ -265,7 +309,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txtPlaca">
               <Properties>
-                <Property name="enabled" type="boolean" value="false"/>
+                <Property name="editable" type="boolean" value="false"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblPlaca">
@@ -284,6 +328,9 @@
                   </StringArray>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cmbTipoItemStateChanged"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
@@ -293,19 +340,64 @@
                 <Property name="text" type="java.lang.String" value=" Tipo de Contrato:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="lblDataInicio">
+            <Component class="javax.swing.JTextField" name="txtValor">
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblContrato">
               <Properties>
-                <Property name="text" type="java.lang.String" value=" Inicio do Contrato:"/>
+                <Property name="text" type="java.lang.String" value=" Valor do Contrato:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtInicioContrato">
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblFimContrato">
+            <Component class="javax.swing.JButton" name="btnSimularValor">
               <Properties>
-                <Property name="text" type="java.lang.String" value=" Fim do Contrato:"/>
+                <Property name="text" type="java.lang.String" value="Simular Valores"/>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSimularValorActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnContrato">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Concluir Contrato"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtFimContrato">
+            <Component class="javax.swing.JButton" name="btnAtualizarContrato">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Atualizar Contrato"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblValorDesconto">
+              <Properties>
+                <Property name="text" type="java.lang.String" value=" Valor com Desconto:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtDesconto">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnLimpar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Limpar Campos"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblDias">
+              <Properties>
+                <Property name="text" type="java.lang.String" value=" Quantidade de dias do contrato:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtDias">
+            </Component>
+            <Component class="javax.swing.JButton" name="btnSelecionarVei">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Selecionar o Ve&#xed;culo"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblFoto">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>
@@ -326,7 +418,29 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="477" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="515" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+        </Container>
+        <Container class="javax.swing.JPanel" name="tabListContratos">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Lista de Contratos">
+                <Property name="tabTitle" type="java.lang.String" value="Lista de Contratos"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="454" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="515" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>

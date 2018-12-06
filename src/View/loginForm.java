@@ -75,8 +75,8 @@ public class loginForm extends javax.swing.JFrame {
         txtSenha.setText("1");
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\l_dsb\\OneDrive\\Documentos\\NetBeansProjects\\Alucar\\Images\\__user_login_icon_307830.png")); // NOI18N
-        jLabel1.setText("<html>\nPowered by Cigano Soft LTDA.\n<br>All rights reserved. ©</br>\n<br>Version 0.2.1 DEVELOPER ALPHA</br>\n<br>ldsb1@ifal.edu.br</br>\n<br>cleidon.vsi@gmail.com</br>\n</html>");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/__user_login_icon_307830.png"))); // NOI18N
+        jLabel1.setText("<html>\nPowered by LC Soft LTDA.\n<br>All rights reserved. ©</br>\n<br>Version 0.2.1 DEVELOPER ALPHA</br>\n<br>ldsb1@ifal.edu.br</br>\n<br>cleidon.vsi@gmail.com</br>\n</html>");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

@@ -111,7 +111,7 @@ public class cadCliForm extends javax.swing.JInternalFrame {
 
         lblSexo.setText(" Sexo:");
 
-        lblCPF.setText(" CPF:");
+        lblCPF.setText(" CPF ou CNPJ:");
 
         lblCivil.setText(" Estado Civil:");
 

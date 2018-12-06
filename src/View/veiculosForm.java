@@ -9,8 +9,8 @@ import Classes.VeiculoUsado;
 import Classes.Veiculo;
 import DAO.VeiculoDAO;
 import java.awt.Dimension;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
+//import javax.swing.ImageIcon;
+//import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 

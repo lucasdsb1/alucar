@@ -65,7 +65,7 @@ public class Principal extends javax.swing.JFrame {
         internalProcedimentos.setName(""); // NOI18N
         internalProcedimentos.setVisible(true);
 
-        btnAddCar.setIcon(new javax.swing.ImageIcon("C:\\Users\\l_dsb\\OneDrive\\Documentos\\NetBeansProjects\\Alucar\\Images\\if_car_add_35817.png")); // NOI18N
+        btnAddCar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/if_car_add_35817.png"))); // NOI18N
         btnAddCar.setText("VEÍCULOS");
         btnAddCar.setToolTipText("");
         btnAddCar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -77,7 +77,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        btnAluguel.setIcon(new javax.swing.ImageIcon("C:\\Users\\l_dsb\\OneDrive\\Documentos\\NetBeansProjects\\Alucar\\Images\\if_3_3319636.png")); // NOI18N
+        btnAluguel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/if_3_3319636.png"))); // NOI18N
         btnAluguel.setText("CONTRATOS");
         btnAluguel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnAluguel.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -87,7 +87,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        btnCadCli.setIcon(new javax.swing.ImageIcon("C:\\Users\\l_dsb\\OneDrive\\Documentos\\NetBeansProjects\\Alucar\\Images\\if_LinkedIn_UI-08_2335587.png")); // NOI18N
+        btnCadCli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/if_LinkedIn_UI-08_2335587.png"))); // NOI18N
         btnCadCli.setText("CLIENTES");
         btnCadCli.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnCadCli.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -97,7 +97,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        btnSair.setIcon(new javax.swing.ImageIcon("C:\\Users\\l_dsb\\OneDrive\\Documentos\\NetBeansProjects\\Alucar\\Images\\Close_Box_Red.png")); // NOI18N
+        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Close_Box_Red.png"))); // NOI18N
         btnSair.setText("SAIR");
         btnSair.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnSair.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);

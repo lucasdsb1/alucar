@@ -142,7 +142,7 @@
             <Component class="javax.swing.JButton" name="btnAddCar">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\l_dsb\OneDrive\Documentos\NetBeansProjects\Alucar\Images\if_car_add_35817.png"/>
+                  <Image iconType="3" name="/Images/if_car_add_35817.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="VE&#xcd;CULOS"/>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
@@ -159,7 +159,7 @@
             <Component class="javax.swing.JButton" name="btnAluguel">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\l_dsb\OneDrive\Documentos\NetBeansProjects\Alucar\Images\if_3_3319636.png"/>
+                  <Image iconType="3" name="/Images/if_3_3319636.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="CONTRATOS"/>
                 <Property name="horizontalAlignment" type="int" value="2"/>
@@ -172,7 +172,7 @@
             <Component class="javax.swing.JButton" name="btnCadCli">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\l_dsb\OneDrive\Documentos\NetBeansProjects\Alucar\Images\if_LinkedIn_UI-08_2335587.png"/>
+                  <Image iconType="3" name="/Images/if_LinkedIn_UI-08_2335587.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="CLIENTES"/>
                 <Property name="horizontalAlignment" type="int" value="2"/>
@@ -185,7 +185,7 @@
             <Component class="javax.swing.JButton" name="btnSair">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\l_dsb\OneDrive\Documentos\NetBeansProjects\Alucar\Images\Close_Box_Red.png"/>
+                  <Image iconType="3" name="/Images/Close_Box_Red.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="SAIR"/>
                 <Property name="horizontalAlignment" type="int" value="2"/>

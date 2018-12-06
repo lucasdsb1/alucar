@@ -6,6 +6,10 @@
 package View;
 
 import Classes.Cliente;
+import Classes.Contrato;
+import Classes.ContratoAPP;
+import Classes.ContratoPF;
+import Classes.ContratoPJ;
 import DAO.ClienteDAO;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -21,6 +25,7 @@ public class aluguelForm extends javax.swing.JInternalFrame {
      */
     public aluguelForm() {
         initComponents();
+        lblFoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/oie_401942oYTgxgbD.png")));
     }
     
     public static boolean instanciaContratos = false;
@@ -52,11 +57,20 @@ public class aluguelForm extends javax.swing.JInternalFrame {
         lblPlaca = new javax.swing.JLabel();
         cmbTipo = new javax.swing.JComboBox<>();
         lblTipo = new javax.swing.JLabel();
-        lblDataInicio = new javax.swing.JLabel();
-        txtInicioContrato = new javax.swing.JTextField();
-        lblFimContrato = new javax.swing.JLabel();
-        txtFimContrato = new javax.swing.JTextField();
+        txtValor = new javax.swing.JTextField();
+        lblContrato = new javax.swing.JLabel();
+        btnSimularValor = new javax.swing.JButton();
+        btnContrato = new javax.swing.JButton();
+        btnAtualizarContrato = new javax.swing.JButton();
+        lblValorDesconto = new javax.swing.JLabel();
+        txtDesconto = new javax.swing.JTextField();
+        btnLimpar = new javax.swing.JButton();
+        lblDias = new javax.swing.JLabel();
+        txtDias = new javax.swing.JTextField();
+        btnSelecionarVei = new javax.swing.JButton();
+        lblFoto = new javax.swing.JLabel();
         tabRevogarContrato = new javax.swing.JPanel();
+        tabListContratos = new javax.swing.JPanel();
 
         setClosable(true);
         setIconifiable(true);
@@ -90,7 +104,7 @@ public class aluguelForm extends javax.swing.JInternalFrame {
 
         lblCodContrato.setText(" Código de Contrato:");
 
-        txtCodContrato.setEnabled(false);
+        txtCodContrato.setEditable(false);
 
         lblCPF.setText(" CPF do Cliente:");
 
@@ -103,27 +117,60 @@ public class aluguelForm extends javax.swing.JInternalFrame {
 
         lblNome.setText(" Nome do Cliente:");
 
-        txtNome.setEnabled(false);
+        txtNome.setEditable(false);
 
         lblVeiculo.setText(" Modelo:");
 
         cmbModelo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione:", "Palio", "Sandero", "Uno", "Argo", "Onix", "Virtus", "Gol", "Fluence", "Captur" }));
+        cmbModelo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbModeloItemStateChanged(evt);
+            }
+        });
 
         cmbMotorizacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione:", "1.0", "1.4", "1.6", "1.8", "2.0" }));
 
         lblMotorizacao.setText(" Motorização:");
 
-        txtPlaca.setEnabled(false);
+        txtPlaca.setEditable(false);
 
         lblPlaca.setText(" Placa:");
 
         cmbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione:", "Aplicativo", "Pessoa Física", "Pessoa Júridica" }));
+        cmbTipo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbTipoItemStateChanged(evt);
+            }
+        });
 
         lblTipo.setText(" Tipo de Contrato:");
 
-        lblDataInicio.setText(" Inicio do Contrato:");
+        lblContrato.setText(" Valor do Contrato:");
 
-        lblFimContrato.setText(" Fim do Contrato:");
+        btnSimularValor.setText("Simular Valores");
+        btnSimularValor.setToolTipText("");
+        btnSimularValor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSimularValorActionPerformed(evt);
+            }
+        });
+
+        btnContrato.setText("Concluir Contrato");
+
+        btnAtualizarContrato.setText("Atualizar Contrato");
+
+        lblValorDesconto.setText(" Valor com Desconto:");
+
+        txtDesconto.setEditable(false);
+        txtDesconto.setToolTipText("");
+
+        btnLimpar.setText("Limpar Campos");
+
+        lblDias.setText(" Quantidade de dias do contrato:");
+
+        btnSelecionarVei.setText("Selecionar o Veículo");
+
+        lblFoto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout tabContratoLayout = new javax.swing.GroupLayout(tabContrato);
         tabContrato.setLayout(tabContratoLayout);
@@ -132,6 +179,7 @@ public class aluguelForm extends javax.swing.JInternalFrame {
             .addGroup(tabContratoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(tabContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnSelecionarVei, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(tabContratoLayout.createSequentialGroup()
                         .addGroup(tabContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtCodContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -145,9 +193,8 @@ public class aluguelForm extends javax.swing.JInternalFrame {
                             .addGroup(tabContratoLayout.createSequentialGroup()
                                 .addComponent(lblTipo)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(cmbTipo, 0, 140, Short.MAX_VALUE)))
+                            .addComponent(cmbTipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(btnBuscarContrato, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnSair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtNome)
                     .addGroup(tabContratoLayout.createSequentialGroup()
                         .addGroup(tabContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -155,26 +202,39 @@ public class aluguelForm extends javax.swing.JInternalFrame {
                             .addComponent(lblVeiculo, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cmbModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(tabContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblMotorizacao, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cmbMotorizacao, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
                         .addGroup(tabContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblMotorizacao)
+                            .addComponent(cmbMotorizacao, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(25, 25, 25)
+                        .addGroup(tabContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtPlaca)
                             .addGroup(tabContratoLayout.createSequentialGroup()
                                 .addComponent(lblPlaca)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(txtPlaca)))
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(tabContratoLayout.createSequentialGroup()
                         .addGroup(tabContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnSair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(tabContratoLayout.createSequentialGroup()
-                                .addComponent(lblDataInicio)
-                                .addGap(55, 55, 55)
-                                .addComponent(lblFimContrato))
+                                .addComponent(btnAtualizarContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnContrato, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(tabContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnLimpar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnSimularValor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(tabContratoLayout.createSequentialGroup()
+                        .addGroup(tabContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtDias)
+                            .addComponent(txtValor)
                             .addGroup(tabContratoLayout.createSequentialGroup()
-                                .addComponent(txtInicioContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtFimContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addGroup(tabContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblContrato)
+                                    .addComponent(lblDias)
+                                    .addComponent(lblValorDesconto))
+                                .addGap(0, 11, Short.MAX_VALUE))
+                            .addComponent(txtDesconto))
+                        .addGap(18, 18, 18)
+                        .addComponent(lblFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         tabContratoLayout.setVerticalGroup(
@@ -195,28 +255,47 @@ public class aluguelForm extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addComponent(lblNome)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(tabContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(tabContratoLayout.createSequentialGroup()
+                        .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(tabContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblVeiculo)
+                            .addComponent(lblMotorizacao)
+                            .addComponent(lblPlaca))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(tabContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(tabContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(cmbModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cmbMotorizacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(32, 32, 32))
+                    .addComponent(btnSelecionarVei))
                 .addGap(18, 18, 18)
+                .addGroup(tabContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(tabContratoLayout.createSequentialGroup()
+                        .addComponent(lblDias)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtDias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblContrato)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblValorDesconto)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtDesconto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblFoto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(22, 22, 22)
                 .addGroup(tabContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblVeiculo)
-                    .addComponent(lblMotorizacao)
-                    .addComponent(lblPlaca))
+                    .addComponent(btnAtualizarContrato)
+                    .addComponent(btnContrato)
+                    .addComponent(btnSimularValor))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(tabContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmbModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbMotorizacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(tabContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblDataInicio)
-                    .addComponent(lblFimContrato))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(tabContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtInicioContrato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtFimContrato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 177, Short.MAX_VALUE)
-                .addComponent(btnSair)
-                .addContainerGap())
+                    .addComponent(btnSair)
+                    .addComponent(btnLimpar))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         tabContratos.addTab("Realizar Contrato", tabContrato);
@@ -229,10 +308,23 @@ public class aluguelForm extends javax.swing.JInternalFrame {
         );
         tabRevogarContratoLayout.setVerticalGroup(
             tabRevogarContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 477, Short.MAX_VALUE)
+            .addGap(0, 515, Short.MAX_VALUE)
         );
 
         tabContratos.addTab("Revogar Contrato", tabRevogarContrato);
+
+        javax.swing.GroupLayout tabListContratosLayout = new javax.swing.GroupLayout(tabListContratos);
+        tabListContratos.setLayout(tabListContratosLayout);
+        tabListContratosLayout.setHorizontalGroup(
+            tabListContratosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 454, Short.MAX_VALUE)
+        );
+        tabListContratosLayout.setVerticalGroup(
+            tabListContratosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 515, Short.MAX_VALUE)
+        );
+
+        tabContratos.addTab("Lista de Contratos", tabListContratos);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -254,53 +346,166 @@ public class aluguelForm extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_formInternalFrameClosed
 
-    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
-        
-        dispose();
-        
-    }//GEN-LAST:event_btnSairActionPerformed
+    private void btnSimularValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimularValorActionPerformed
+     
+        if (cmbTipo.getSelectedItem() == "Selecione:") {
 
-    private void txtCPFKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCPFKeyPressed
-        
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            txtDesconto.setText(null);
+
+        } else if (cmbTipo.getSelectedItem() == "Aplicativo") {
+
+            ContratoAPP aluguel = new ContratoAPP();
+            aluguel.setTipoContrato(cmbTipo.getSelectedItem().toString());
+            aluguel.setqtdDiasContrato(txtDias.getText());
+            txtValor.setText(aluguel.valorContrato(cmbModelo.getSelectedItem().toString()));
+            txtDesconto.setText(aluguel.desconto(Double.parseDouble(txtValor.getText())));
             
-            ClienteDAO dao = new ClienteDAO();
+
+        } else if (cmbTipo.getSelectedItem() == "Pessoa Física") {
+
+            ContratoPF aluguel = new ContratoPF();
+            aluguel.setTipoContrato(cmbTipo.getSelectedItem().toString());
+            aluguel.setqtdDiasContrato(txtDias.getText());
+            txtValor.setText(aluguel.valorContrato(cmbModelo.getSelectedItem().toString()));
+            txtDesconto.setText(aluguel.desconto(Double.parseDouble(txtValor.getText())));
             
-            for (Cliente c : dao.searchIntoDB(txtCPF.getText())) {
-                
-                txtNome.setText(c.getNomeCli());
-                
-            }
-                    
+        } else if (cmbTipo.getSelectedItem() == "Pessoa Júridica") {
+
+            ContratoPJ aluguel = new ContratoPJ();
+            aluguel.setTipoContrato(cmbTipo.getSelectedItem().toString());
+            aluguel.setqtdDiasContrato(txtDias.getText());
+            txtValor.setText(aluguel.valorContrato(cmbModelo.getSelectedItem().toString()));
+            txtDesconto.setText(aluguel.desconto(Double.parseDouble(txtValor.getText())));
+
         }
         
+    }//GEN-LAST:event_btnSimularValorActionPerformed
+
+    private void cmbTipoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbTipoItemStateChanged
+
+        if (cmbTipo.getSelectedItem() == "Selecione:") {
+
+            txtDesconto.setText(null);
+
+        } else if (cmbTipo.getSelectedItem() == "Aplicativo") {
+
+            txtDesconto.setText("15%");
+
+        } else if (cmbTipo.getSelectedItem() == "Pessoa Física") {
+
+            txtDesconto.setText("5%");
+
+        } else if (cmbTipo.getSelectedItem() == "Pessoa Júridica") {
+
+            txtDesconto.setText("10%");
+            lblCPF.setText(" CNPJ da empresa:");
+
+        }
+
+    }//GEN-LAST:event_cmbTipoItemStateChanged
+
+    private void cmbModeloItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbModeloItemStateChanged
+
+        if (cmbModelo.getSelectedItem().equals("Selecione:")) {
+
+            lblFoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/oie_401942oYTgxgbD.png")));
+
+        } else if (cmbModelo.getSelectedItem().equals("Palio")) {
+
+            lblFoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/oie_transparent.png")));
+
+        } else if (cmbModelo.getSelectedItem().equals("Sandero")) {
+
+            lblFoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/oie_3l5CglDkS0i8.png")));
+
+        } else if (cmbModelo.getSelectedItem().equals("Uno")) {
+
+            lblFoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/oie_rW2hF85Ww0Og.png")));
+
+        } else if (cmbModelo.getSelectedItem().equals("Argo")) {
+
+            lblFoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/oie_transparent (1).png")));
+
+        } else if (cmbModelo.getSelectedItem().equals("Onix")) {
+
+            lblFoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/oie_19ytcHrrWbLX.png")));
+
+        } else if (cmbModelo.getSelectedItem().equals("Virtus")) {
+
+            lblFoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/oie_vW4d9KAg1hBQ.png")));
+
+        } else if (cmbModelo.getSelectedItem().equals("Gol")) {
+
+            lblFoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/oie_1FTFRgOTVAMe.png")));
+
+        } else if (cmbModelo.getSelectedItem().equals("Fluence")) {
+
+            lblFoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/fluence.png")));
+
+        } else if (cmbModelo.getSelectedItem().equals("Captur")) {
+
+            lblFoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/oie_crGBzVLUhnyU.png")));
+
+        }
+
+    }//GEN-LAST:event_cmbModeloItemStateChanged
+
+    private void txtCPFKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCPFKeyPressed
+
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+
+            ClienteDAO dao = new ClienteDAO();
+
+            for (Cliente c : dao.searchIntoDB(txtCPF.getText())) {
+
+                txtNome.setText(c.getNomeCli());
+
+            }
+
+        }
+
     }//GEN-LAST:event_txtCPFKeyPressed
+
+    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
+
+        dispose();
+
+    }//GEN-LAST:event_btnSairActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAtualizarContrato;
     private javax.swing.JButton btnBuscarContrato;
+    private javax.swing.JButton btnContrato;
+    private javax.swing.JButton btnLimpar;
     private javax.swing.JButton btnSair;
+    private javax.swing.JButton btnSelecionarVei;
+    private javax.swing.JButton btnSimularValor;
     private javax.swing.JComboBox<String> cmbModelo;
     private javax.swing.JComboBox<String> cmbMotorizacao;
     private javax.swing.JComboBox<String> cmbTipo;
     private javax.swing.JLabel lblCPF;
     private javax.swing.JLabel lblCodContrato;
-    private javax.swing.JLabel lblDataInicio;
-    private javax.swing.JLabel lblFimContrato;
+    private javax.swing.JLabel lblContrato;
+    private javax.swing.JLabel lblDias;
+    private javax.swing.JLabel lblFoto;
     private javax.swing.JLabel lblMotorizacao;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblPlaca;
     private javax.swing.JLabel lblTipo;
+    private javax.swing.JLabel lblValorDesconto;
     private javax.swing.JLabel lblVeiculo;
     private javax.swing.JPanel tabContrato;
     private javax.swing.JTabbedPane tabContratos;
+    private javax.swing.JPanel tabListContratos;
     private javax.swing.JPanel tabRevogarContrato;
     private javax.swing.JTextField txtCPF;
     private javax.swing.JTextField txtCodContrato;
-    private javax.swing.JTextField txtFimContrato;
-    private javax.swing.JTextField txtInicioContrato;
+    private javax.swing.JTextField txtDesconto;
+    private javax.swing.JTextField txtDias;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtPlaca;
+    private javax.swing.JTextField txtValor;
     // End of variables declaration//GEN-END:variables
 
     public void setPosicao() {
