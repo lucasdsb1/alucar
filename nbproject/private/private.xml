@@ -5,11 +5,9 @@
         <group>
             <file>file:/C:/Users/l_dsb/OneDrive/Documentos/NetBeansProjects/Alucar/src/View/veiculosForm.java</file>
             <file>file:/C:/Users/l_dsb/OneDrive/Documentos/NetBeansProjects/Alucar/src/DAO/VeiculoDAO.java</file>
-            <file>file:/C:/Users/l_dsb/OneDrive/Documentos/NetBeansProjects/Alucar/src/DAO/InterfaceCRUD.java</file>
-            <file>file:/C:/Users/l_dsb/OneDrive/Documentos/NetBeansProjects/Alucar/src/View/Principal.java</file>
             <file>file:/C:/Users/l_dsb/OneDrive/Documentos/NetBeansProjects/Alucar/src/View/aluguelForm.java</file>
             <file>file:/C:/Users/l_dsb/OneDrive/Documentos/NetBeansProjects/Alucar/src/DAO/ContratoDAO.java</file>
-            <file>file:/C:/Users/l_dsb/OneDrive/Documentos/NetBeansProjects/Alucar/src/DAO/ClienteDAO.java</file>
+            <file>file:/C:/Users/l_dsb/OneDrive/Documentos/NetBeansProjects/Alucar/src/Classes/Veiculo.java</file>
         </group>
     </open-files>
 </project-private>

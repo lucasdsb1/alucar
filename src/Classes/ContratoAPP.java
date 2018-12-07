@@ -12,17 +12,23 @@ package Classes;
 public class ContratoAPP extends Contrato {
     
     private String tipoContrato;
-    private int codAPP;
-    private String tipoAPP;
-    private String CPFouCNPJCli;
+    private int cod_tipoContrato;
+    private String valor_contrato;
+    
+    public ContratoAPP() {
+        
+        this.cod_tipoContrato = 1;
+        this.tipoContrato = "Aplicativo";
+
+    }
 
     @Override
     public String desconto(double valor) {
         
         valor = valor - (valor * 0.15);
-        String valorComDesconto =  "15%: " + valor;
+        this.valor_contrato = Double.toString(valor);
         
-        return valorComDesconto;
+        return valor_contrato;
         
     }
 
@@ -41,45 +47,31 @@ public class ContratoAPP extends Contrato {
     }
 
     /**
-     * @return the codAPP
+     * @return the cod_tipoContrato
      */
-    public int getCodAPP() {
-        return codAPP;
+    public int getCod_tipoContrato() {
+        return cod_tipoContrato;
     }
 
     /**
-     * @param codAPP the codAPP to set
+     * @param cod_tipoContrato the cod_tipoContrato to set
      */
-    public void setCodAPP(int codAPP) {
-        this.codAPP = codAPP;
+    public void setCod_tipoContrato(int cod_tipoContrato) {
+        this.cod_tipoContrato = cod_tipoContrato;
     }
 
     /**
-     * @return the tipoAPP
+     * @return the valor_contrato
      */
-    public String getTipoAPP() {
-        return tipoAPP;
+    public String getValor_contrato() {
+        return valor_contrato;
     }
 
     /**
-     * @param tipoAPP the tipoAPP to set
+     * @param valor_contrato the valor_contrato to set
      */
-    public void setTipoAPP(String tipoAPP) {
-        this.tipoAPP = tipoAPP;
-    }
-
-    /**
-     * @return the CPFouCNPJCli
-     */
-    public String getCPFouCNPJCli() {
-        return CPFouCNPJCli;
-    }
-
-    /**
-     * @param CPFouCNPJCli the CPFouCNPJCli to set
-     */
-    public void setCPFouCNPJCli(String CPFouCNPJCli) {
-        this.CPFouCNPJCli = CPFouCNPJCli;
+    public void setValor_contrato(String valor_contrato) {
+        this.valor_contrato = valor_contrato;
     }
     
 }

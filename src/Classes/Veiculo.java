@@ -13,6 +13,7 @@ public class Veiculo {
     private String anoFab;
     private String modelo;
     private String motorizacao;
+    private int cod_contrato;
 
     /**
      * @return the placa
@@ -82,6 +83,20 @@ public class Veiculo {
      */
     public void setMotorizacao(String motorizacao) {
         this.motorizacao = motorizacao;
+    }
+
+    /**
+     * @return the cod_contrato
+     */
+    public int getCod_contrato() {
+        return cod_contrato;
+    }
+
+    /**
+     * @param cod_contrato the cod_contrato to set
+     */
+    public void setCod_contrato(int cod_contrato) {
+        this.cod_contrato = cod_contrato;
     }
     
     

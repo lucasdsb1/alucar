@@ -13,8 +13,7 @@ cpf varchar(11) primary key unique not null,
 estadocivil varchar(25),
 rg integer,
 uf varchar(2),
-cidade varchar(20),
-cod_contrato integer);
+cidade varchar(20));
 
 create table veiculo (
 Placa varchar(10) primary key not null,
@@ -36,13 +35,13 @@ create table aluguel (
 cod_contrato integer primary key not_null auto_increment,
 placa varchar(10),
 cpf varchar(11),
-inicio_contrato varchar(10),
 fim_contrato varchar(10),
 cod_tipo integer,
+valor_contrato float,
 constraint fk_placa foreign key(placa) references veiculo(placa),
 constraint fk_cpf foreign key(cpf) references clientes(cpf),
 constraint fk_tipo foreign key(cod_tipo) references tipo_aluguel(cod_tipo)
 );
 
-alter table clientes add constraint fk_cod_contrato foreign key(cod_contrato) references aluguel(cod_contrato);
 alter table veiculo add constraint fk_cod_contrato_vei foreign key(cod_contrato) references aluguel(cod_contrato);
+alter table aluguel add constraint uni_placa unique (placa);

@@ -162,6 +162,7 @@ public class VeiculoDAO implements InterfaceCRUD<VeiculoUsado> {
                 vei.setModelo(rs.getString("nome"));
                 vei.setPlaca(rs.getString("placa"));
                 vei.setMotorizacao(rs.getString("motorizacao"));
+                vei.setCod_contrato(rs.getInt("cod_contrato"));
                 veiculo.add(vei);
 
             }

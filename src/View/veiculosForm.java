@@ -672,7 +672,8 @@ public class veiculosForm extends javax.swing.JInternalFrame {
             modelo.addRow(new Object[]{
                 v.getModelo(),
                 v.getPlaca(),
-                v.getMotorizacao(),});
+                v.getMotorizacao(),
+                v.getCod_contrato()});
 
         }
 
