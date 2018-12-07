@@ -29,10 +29,10 @@ motorizacao varchar (3)
 create table tipo_aluguel (
 cod_tipo integer primary key not null auto_increment,
 nome_tipo varchar(60)
-)
+);
 
 create table aluguel (
-cod_contrato integer primary key not_null auto_increment,
+cod_contrato integer primary key not null auto_increment,
 placa varchar(10),
 cpf varchar(11),
 fim_contrato varchar(10),

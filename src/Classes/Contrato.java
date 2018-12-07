@@ -15,7 +15,6 @@ public abstract class Contrato{
     private int codContrato;
     private String placaVei;
     private String qtdDiasContrato;
-    private double valorContrato;
     private String CPFouCNPJCli;
     private String dataFimContrato;
     
@@ -118,20 +117,6 @@ public abstract class Contrato{
      */
     public void setQtdDiasContrato(String qtdDiasContrato) {
         this.qtdDiasContrato = qtdDiasContrato;
-    }
-
-    /**
-     * @return the valorContrato
-     */
-    public double getValorContrato() {
-        return valorContrato;
-    }
-
-    /**
-     * @param valorContrato the valorContrato to set
-     */
-    public void setValorContrato(double valorContrato) {
-        this.valorContrato = valorContrato;
     }
 
     /**

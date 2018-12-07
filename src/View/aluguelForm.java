@@ -44,7 +44,6 @@ public class aluguelForm extends javax.swing.JInternalFrame {
         tabContratos = new javax.swing.JTabbedPane();
         tabContrato = new javax.swing.JPanel();
         btnBuscarContrato = new javax.swing.JButton();
-        btnSair = new javax.swing.JButton();
         lblCodContrato = new javax.swing.JLabel();
         txtCodContrato = new javax.swing.JTextField();
         lblCPF = new javax.swing.JLabel();
@@ -73,6 +72,7 @@ public class aluguelForm extends javax.swing.JInternalFrame {
         lblFoto = new javax.swing.JLabel();
         lblDataFim = new javax.swing.JLabel();
         txtDataFim = new javax.swing.JTextField();
+        btnSair = new javax.swing.JButton();
         tabRevogarContrato = new javax.swing.JPanel();
         tabListContratos = new javax.swing.JPanel();
 
@@ -98,11 +98,9 @@ public class aluguelForm extends javax.swing.JInternalFrame {
         });
 
         btnBuscarContrato.setText("Buscar Contrato");
-
-        btnSair.setText("Sair");
-        btnSair.addActionListener(new java.awt.event.ActionListener() {
+        btnBuscarContrato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSairActionPerformed(evt);
+                btnBuscarContratoActionPerformed(evt);
             }
         });
 
@@ -167,6 +165,11 @@ public class aluguelForm extends javax.swing.JInternalFrame {
         });
 
         btnAtualizarContrato.setText("Atualizar Contrato");
+        btnAtualizarContrato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtualizarContratoActionPerformed(evt);
+            }
+        });
 
         lblValorDesconto.setText(" Valor com Desconto:");
 
@@ -187,6 +190,13 @@ public class aluguelForm extends javax.swing.JInternalFrame {
         lblFoto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         lblDataFim.setText(" Data fim do Contrato:");
+
+        btnSair.setText("Sair");
+        btnSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSairActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout tabContratoLayout = new javax.swing.GroupLayout(tabContrato);
         tabContrato.setLayout(tabContratoLayout);
@@ -223,15 +233,15 @@ public class aluguelForm extends javax.swing.JInternalFrame {
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(tabContratoLayout.createSequentialGroup()
                         .addGroup(tabContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnSair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(tabContratoLayout.createSequentialGroup()
                                 .addComponent(btnAtualizarContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnContrato, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnSimularValor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(btnContrato, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(tabContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnLimpar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnSimularValor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(btnSair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(tabContratoLayout.createSequentialGroup()
                         .addGroup(tabContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(tabContratoLayout.createSequentialGroup()
@@ -285,9 +295,9 @@ public class aluguelForm extends javax.swing.JInternalFrame {
                     .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(tabContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNome)
-                    .addComponent(lblDias))
+                .addGroup(tabContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblDias, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblNome))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(tabContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -325,13 +335,13 @@ public class aluguelForm extends javax.swing.JInternalFrame {
                 .addGap(22, 22, 22)
                 .addGroup(tabContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAtualizarContrato)
-                    .addComponent(btnContrato)
-                    .addComponent(btnSimularValor))
+                    .addComponent(btnSimularValor)
+                    .addComponent(btnSair))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(tabContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSair)
-                    .addComponent(btnLimpar))
-                .addContainerGap(31, Short.MAX_VALUE))
+                    .addComponent(btnLimpar)
+                    .addComponent(btnContrato))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         tabContratos.addTab("Realizar Contrato", tabContrato);
@@ -506,12 +516,6 @@ public class aluguelForm extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_txtCPFKeyPressed
 
-    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
-
-        dispose();
-
-    }//GEN-LAST:event_btnSairActionPerformed
-
     private void btnSelecionarVeiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelecionarVeiActionPerformed
         
         ContratoDAO dao = new ContratoDAO();
@@ -527,8 +531,7 @@ public class aluguelForm extends javax.swing.JInternalFrame {
     private void btnContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContratoActionPerformed
         
         ContratoDAO dao = new ContratoDAO();
-        boolean check1 = false;
-        boolean check2 = false;
+        boolean check = false;
         
         if (cmbTipo.getSelectedItem() == "Pessoa Física") {
             
@@ -541,8 +544,9 @@ public class aluguelForm extends javax.swing.JInternalFrame {
             pf.setDataFimContrato(txtDataFim.getText());
             pf.setValor_contrato(txtDesconto.getText());
             
-            check1 = dao.insertIntoDB(pf);
-            check2 = dao.insertIntoDBPF(pf);
+            check = dao.insertIntoDBPF(pf);
+            
+            txtCodContrato.setText(Integer.toString(pf.getCodContrato()));
             
         } else if (cmbTipo.getSelectedItem() == "Aplicativo") {
             
@@ -555,8 +559,9 @@ public class aluguelForm extends javax.swing.JInternalFrame {
             app.setDataFimContrato(txtDataFim.getText());
             app.setValor_contrato(txtDesconto.getText());
             
-            check1 = dao.insertIntoDB(app);
-            check2 = dao.insertIntoDBAPP(app);
+            check = dao.insertIntoDBAPP(app);
+            
+            txtCodContrato.setText(Integer.toString(app.getCodContrato()));
             
         } else if (cmbTipo.getSelectedItem() == "Pessoa Júridica") {
             
@@ -569,19 +574,102 @@ public class aluguelForm extends javax.swing.JInternalFrame {
             pj.setDataFimContrato(txtDataFim.getText());
             pj.setValor_contrato(txtDesconto.getText());
             
-            check1 = dao.insertIntoDB(pj);
-            check2 = dao.insertIntoDBPJ(pj);
+            check = dao.insertIntoDBPJ(pj);
+            
+            txtCodContrato.setText(Integer.toString(pj.getCodContrato()));
             
         }
         
-        if (check1 == true && check2 ==  true) {
+        if (check ==  true) {
             
             JOptionPane.showMessageDialog(null, "Contrato realizado com sucesso!");
-            
+                    
         }
         
         
     }//GEN-LAST:event_btnContratoActionPerformed
+
+    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
+        
+        dispose();
+        
+    }//GEN-LAST:event_btnSairActionPerformed
+
+    private void btnAtualizarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarContratoActionPerformed
+        
+        ContratoDAO dao = new ContratoDAO();
+        boolean check = false;
+        
+        if (cmbTipo.getSelectedItem() == "Pessoa Física") {
+            
+            ContratoPF pf = new ContratoPF();
+        
+            pf.setCPFouCNPJCli(txtCPF.getText());
+            pf.setTipoContrato(cmbTipo.getSelectedItem().toString());
+            pf.setQtdDiasContrato(txtDias.getText());
+            pf.setPlacaVei(txtPlaca.getText());
+            pf.setDataFimContrato(txtDataFim.getText());
+            pf.setValor_contrato(txtDesconto.getText());
+            
+            check = dao.insertIntoDBPF(pf);
+            
+            txtCodContrato.setText(Integer.toString(pf.getCodContrato()));
+            
+        } else if (cmbTipo.getSelectedItem() == "Aplicativo") {
+            
+            ContratoAPP app = new ContratoAPP();
+        
+            app.setCPFouCNPJCli(txtCPF.getText());
+            app.setTipoContrato(cmbTipo.getSelectedItem().toString());
+            app.setQtdDiasContrato(txtDias.getText());
+            app.setPlacaVei(txtPlaca.getText());
+            app.setDataFimContrato(txtDataFim.getText());
+            app.setValor_contrato(txtDesconto.getText());
+            
+            check = dao.insertIntoDBAPP(app);
+            
+            txtCodContrato.setText(Integer.toString(app.getCodContrato()));
+            
+        } else if (cmbTipo.getSelectedItem() == "Pessoa Júridica") {
+            
+            ContratoPJ pj = new ContratoPJ();
+        
+            pj.setCPFouCNPJCli(txtCPF.getText());
+            pj.setTipoContrato(cmbTipo.getSelectedItem().toString());
+            pj.setQtdDiasContrato(txtDias.getText());
+            pj.setPlacaVei(txtPlaca.getText());
+            pj.setDataFimContrato(txtDataFim.getText());
+            pj.setValor_contrato(txtDesconto.getText());
+            
+            check = dao.insertIntoDBPJ(pj);
+            
+            txtCodContrato.setText(Integer.toString(pj.getCodContrato()));
+            
+        }
+        
+        if (check ==  true) {
+            
+            JOptionPane.showMessageDialog(null, "Contrato realizado com sucesso!");
+                    
+        }
+        
+    }//GEN-LAST:event_btnAtualizarContratoActionPerformed
+
+    private void btnBuscarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarContratoActionPerformed
+        
+        String cod = JOptionPane.showInputDialog("Digite o CÓDIGO DE CONTRATO que deseja buscar: ");
+
+        recebeBuscaAluguel(cod);
+
+        if (!txtCodContrato.getText().isEmpty()) {
+
+            btnAtualizarContrato.setEnabled(true);
+            btnContrato.setEnabled(false);
+            txtCodContrato.setEnabled(false);
+            
+        }
+        
+    }//GEN-LAST:event_btnBuscarContratoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -625,6 +713,29 @@ public class aluguelForm extends javax.swing.JInternalFrame {
 
         Dimension d = this.getDesktopPane().getSize();
         this.setLocation((d.width - this.getSize().width) / 2, (d.height - this.getSize().height) / 2);
+
+    }
+    
+    public void recebeBuscaAluguel(String cod) {
+
+        ContratoDAO dao = new ContratoDAO();
+        Cliente cli = new Cliente();
+        Veiculo vei = new Veiculo();
+
+
+        for (ContratoAPP aluguel : dao.searchIntoDB(cod)) {
+
+            txtCodContrato.setText(Integer.toString(aluguel.getCodContrato()));
+            txtCPF.setText(aluguel.getCPFouCNPJCli());
+            cmbTipo.setSelectedItem(aluguel.getTipoContrato());
+            txtNome.setText(cli.getNomeCli());
+            cmbMotorizacao.setSelectedItem(vei.getModelo());
+            cmbMotorizacao.setSelectedItem(vei.getMotorizacao());
+            txtPlaca.setText(aluguel.getPlacaVei());
+            txtDataFim.setText(aluguel.getDataFimContrato());
+            txtValor.setText(aluguel.getValor_contrato());
+
+        }
 
     }
     
