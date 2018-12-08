@@ -355,7 +355,7 @@ public class ContratoDAO {
 
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/alucar?serverTimezone=UTC", "root", "usbw");
-            PreparedStatement stmt = con.prepareStatement("select * from aluguel where cod_contrato = ?");
+            PreparedStatement stmt = con.prepareStatement("select a.cod_contrato, a.placa, a.cpf, a.fim_contrato, a.cod_tipo, a.valor_contrato, c.nome, v.nome as modelo, v.motorizacao from aluguel as a, clientes as c, veiculo as v where a.cpf = c.cpf and a.placa = v.placa and a.cod_contrato = ?");
             stmt.setString(1, cod);
             ResultSet rs = stmt.executeQuery();
 
@@ -367,33 +367,12 @@ public class ContratoDAO {
                 aluguel.setDataFimContrato(rs.getString("fim_contrato"));
                 aluguel.setCod_tipoContrato(rs.getInt("cod_tipo"));
                 aluguel.setValor_contrato(rs.getString("valor_contrato"));
+                aluguel.setNomeCli(rs.getString("nome"));
+                aluguel.setModeloVei(rs.getString("modelo"));
+                aluguel.setMotorizacaoVei(rs.getString("motorizacao"));
+                
                 lista.add(aluguel);
                 
-                
-            }
-            
-            stmt = con.prepareStatement("select nome from clientes where cpf = ?");
-            stmt.setString(1, aluguel.getCPFouCNPJCli());
-            rs = stmt.executeQuery();
-            
-            while (rs.next()) {
-                
-                Cliente cli = new Cliente();
-                
-                cli.setNomeCli(rs.getString("nome"));
-                
-            }
-            
-            stmt = con.prepareStatement("select nome, motorizacao from veiculo where placa = ?");
-            stmt.setString(1, aluguel.getPlacaVei());
-            rs = stmt.executeQuery();
-            
-            while (rs.next()) {
-                
-                Veiculo vei = new Veiculo();
-                
-                vei.setModelo(rs.getString("nome"));
-                vei.setMotorizacao(rs.getString("motorizacao"));
                 
             }
             

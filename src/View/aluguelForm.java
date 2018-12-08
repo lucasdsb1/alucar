@@ -719,7 +719,7 @@ public class aluguelForm extends javax.swing.JInternalFrame {
     public void recebeBuscaAluguel(String cod) {
 
         ContratoDAO dao = new ContratoDAO();
-        Cliente cli = new Cliente();
+        //Cliente cli = new Cliente();
         Veiculo vei = new Veiculo();
 
 
@@ -728,9 +728,9 @@ public class aluguelForm extends javax.swing.JInternalFrame {
             txtCodContrato.setText(Integer.toString(aluguel.getCodContrato()));
             txtCPF.setText(aluguel.getCPFouCNPJCli());
             cmbTipo.setSelectedItem(aluguel.getTipoContrato());
-            txtNome.setText(cli.getNomeCli());
-            cmbMotorizacao.setSelectedItem(vei.getModelo());
-            cmbMotorizacao.setSelectedItem(vei.getMotorizacao());
+            txtNome.setText(aluguel.getNomeCli());
+            cmbModelo.setSelectedItem(aluguel.getModeloVei());
+            cmbMotorizacao.setSelectedItem(aluguel.getMotorizacaoVei());
             txtPlaca.setText(aluguel.getPlacaVei());
             txtDataFim.setText(aluguel.getDataFimContrato());
             txtValor.setText(aluguel.getValor_contrato());

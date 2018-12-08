@@ -17,6 +17,9 @@ public abstract class Contrato{
     private String qtdDiasContrato;
     private String CPFouCNPJCli;
     private String dataFimContrato;
+    private String nomeCli;
+    private String modeloVei;
+    private String motorizacaoVei;
     
     public abstract String desconto(double valor);
     
@@ -145,6 +148,48 @@ public abstract class Contrato{
      */
     public void setDataFimContrato(String dataFimContrato) {
         this.dataFimContrato = dataFimContrato;
+    }
+
+    /**
+     * @return the nomeCli
+     */
+    public String getNomeCli() {
+        return nomeCli;
+    }
+
+    /**
+     * @param nomeCli the nomeCli to set
+     */
+    public void setNomeCli(String nomeCli) {
+        this.nomeCli = nomeCli;
+    }
+
+    /**
+     * @return the modeloVei
+     */
+    public String getModeloVei() {
+        return modeloVei;
+    }
+
+    /**
+     * @param modeloVei the modeloVei to set
+     */
+    public void setModeloVei(String modeloVei) {
+        this.modeloVei = modeloVei;
+    }
+
+    /**
+     * @return the motorizacaoVei
+     */
+    public String getMotorizacaoVei() {
+        return motorizacaoVei;
+    }
+
+    /**
+     * @param motorizacaoVei the motorizacaoVei to set
+     */
+    public void setMotorizacaoVei(String motorizacaoVei) {
+        this.motorizacaoVei = motorizacaoVei;
     }
    
 }
