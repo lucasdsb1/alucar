@@ -16,13 +16,9 @@ import DAO.ContratoDAO;
 import DAO.VeiculoDAO;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -36,6 +32,7 @@ public class aluguelForm extends javax.swing.JInternalFrame {
     public aluguelForm() {
         initComponents();
         lblFoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/oie_401942oYTgxgbD.png")));
+        readListaAlu();
     }
     
     public static boolean instanciaContratos = false;
@@ -82,7 +79,30 @@ public class aluguelForm extends javax.swing.JInternalFrame {
         txtDataFim = new javax.swing.JTextField();
         btnSair = new javax.swing.JButton();
         tabRevogarContrato = new javax.swing.JPanel();
+        btnBuscarRev = new javax.swing.JButton();
+        lblCodRev = new javax.swing.JLabel();
+        txtCodRev = new javax.swing.JTextField();
+        lblNomeRev = new javax.swing.JLabel();
+        txtNomeRev = new javax.swing.JTextField();
+        lblCPFRev = new javax.swing.JLabel();
+        txtCPFRev = new javax.swing.JTextField();
+        lblKMAntigaRev = new javax.swing.JLabel();
+        txtKMVelhaRev = new javax.swing.JTextField();
+        txtKMNovaRev = new javax.swing.JTextField();
+        lblKMNova = new javax.swing.JLabel();
+        lblAvariadoRev = new javax.swing.JLabel();
+        cmbAvariadoRev = new javax.swing.JComboBox<>();
+        btnRevogar = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        txtPlacaRev = new javax.swing.JTextField();
+        lblPlacaRev = new javax.swing.JLabel();
         tabListContratos = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        btnAtualizarLista = new javax.swing.JButton();
+        btnBuscarLista = new javax.swing.JButton();
+        txtBuscarLista = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
@@ -174,6 +194,7 @@ public class aluguelForm extends javax.swing.JInternalFrame {
         });
 
         btnAtualizarContrato.setText("Atualizar Contrato");
+        btnAtualizarContrato.setEnabled(false);
         btnAtualizarContrato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAtualizarContratoActionPerformed(evt);
@@ -186,6 +207,11 @@ public class aluguelForm extends javax.swing.JInternalFrame {
         txtDesconto.setToolTipText("");
 
         btnLimpar.setText("Limpar Campos");
+        btnLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimparActionPerformed(evt);
+            }
+        });
 
         lblDias.setText(" Total de dias:");
 
@@ -355,28 +381,199 @@ public class aluguelForm extends javax.swing.JInternalFrame {
 
         tabContratos.addTab("Realizar Contrato", tabContrato);
 
+        btnBuscarRev.setText("Buscar Contrato");
+        btnBuscarRev.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarRevActionPerformed(evt);
+            }
+        });
+
+        lblCodRev.setText(" Código do Contrato:");
+
+        txtCodRev.setEditable(false);
+
+        lblNomeRev.setText(" Nome:");
+
+        txtNomeRev.setEditable(false);
+
+        lblCPFRev.setText(" CPF ou CNPJ:");
+
+        txtCPFRev.setEditable(false);
+
+        lblKMAntigaRev.setText(" KM Atual:");
+
+        txtKMVelhaRev.setEditable(false);
+
+        lblKMNova.setText(" KM Nova:");
+
+        lblAvariadoRev.setText(" Está avariado?");
+
+        cmbAvariadoRev.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione:", "Sim", "Não" }));
+
+        btnRevogar.setText("Revogar Contrato!");
+        btnRevogar.setEnabled(false);
+        btnRevogar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRevogarActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("<html>\n<Center>Revise todas a condições com o cliente.</Center>\n<br><Center>A ação não tem retorno.</br></Center>\n<br><Center>Certifique-se que essa seja realmente a decisão do cliente.</br></Center>\n<br><Center>Não esqueça de atualizar a quilometragem do veículo.</br></Center>\n<br><Center> Verificar avarias!</br></Center>\n</html>");
+
+        txtPlacaRev.setEditable(false);
+
+        lblPlacaRev.setText(" Placa:");
+
         javax.swing.GroupLayout tabRevogarContratoLayout = new javax.swing.GroupLayout(tabRevogarContrato);
         tabRevogarContrato.setLayout(tabRevogarContratoLayout);
         tabRevogarContratoLayout.setHorizontalGroup(
             tabRevogarContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 454, Short.MAX_VALUE)
+            .addGroup(tabRevogarContratoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(tabRevogarContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnBuscarRev, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtNomeRev)
+                    .addComponent(btnRevogar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(tabRevogarContratoLayout.createSequentialGroup()
+                        .addGroup(tabRevogarContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblAvariadoRev)
+                            .addComponent(cmbAvariadoRev, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE)
+                    .addGroup(tabRevogarContratoLayout.createSequentialGroup()
+                        .addGroup(tabRevogarContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblCodRev)
+                            .addComponent(txtCodRev, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblNomeRev)
+                            .addComponent(lblCPFRev)
+                            .addComponent(txtCPFRev)
+                            .addComponent(lblKMAntigaRev)
+                            .addComponent(txtKMVelhaRev, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(tabRevogarContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtPlacaRev, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
+                            .addComponent(txtKMNovaRev, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblPlacaRev, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblKMNova, javax.swing.GroupLayout.Alignment.LEADING))))
+                .addContainerGap())
         );
         tabRevogarContratoLayout.setVerticalGroup(
             tabRevogarContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 519, Short.MAX_VALUE)
+            .addGroup(tabRevogarContratoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnBuscarRev)
+                .addGap(18, 18, 18)
+                .addComponent(lblCodRev)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtCodRev, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lblNomeRev)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtNomeRev, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(tabRevogarContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCPFRev)
+                    .addComponent(lblPlacaRev))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(tabRevogarContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtCPFRev, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPlacaRev, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(tabRevogarContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblKMAntigaRev)
+                    .addComponent(lblKMNova))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(tabRevogarContratoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtKMVelhaRev, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtKMNovaRev, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(lblAvariadoRev)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cmbAvariadoRev, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(btnRevogar)
+                .addGap(21, 21, 21))
         );
 
         tabContratos.addTab("Revogar Contrato", tabRevogarContrato);
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Código de Contrato", "Placa", "CPF/CNPJ", "Fim do Contrato"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+
+        btnAtualizarLista.setText("Atualizar Lista");
+        btnAtualizarLista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtualizarListaActionPerformed(evt);
+            }
+        });
+
+        btnBuscarLista.setText("Buscar");
+        btnBuscarLista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarListaActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText(" Digite o código do Contrato para busca:");
 
         javax.swing.GroupLayout tabListContratosLayout = new javax.swing.GroupLayout(tabListContratos);
         tabListContratos.setLayout(tabListContratosLayout);
         tabListContratosLayout.setHorizontalGroup(
             tabListContratosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 454, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabListContratosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(tabListContratosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtBuscarLista, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
+                    .addGroup(tabListContratosLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(18, 18, 18)
+                .addGroup(tabListContratosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(btnAtualizarLista, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
+                    .addComponent(btnBuscarLista, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+            .addGroup(tabListContratosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 454, Short.MAX_VALUE))
         );
         tabListContratosLayout.setVerticalGroup(
             tabListContratosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 519, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabListContratosLayout.createSequentialGroup()
+                .addContainerGap(466, Short.MAX_VALUE)
+                .addGroup(tabListContratosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnAtualizarLista, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(8, 8, 8)
+                .addGroup(tabListContratosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnBuscarLista)
+                    .addComponent(txtBuscarLista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+            .addGroup(tabListContratosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(tabListContratosLayout.createSequentialGroup()
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 74, Short.MAX_VALUE)))
         );
 
         tabContratos.addTab("Lista de Contratos", tabListContratos);
@@ -693,7 +890,7 @@ public class aluguelForm extends javax.swing.JInternalFrame {
         
         String cod = JOptionPane.showInputDialog("Digite o CÓDIGO DE CONTRATO que deseja buscar: ");
 
-        recebeBuscaAluguel(cod);
+        recebeBuscaAluguel(cod, 0);
 
         if (!txtCodContrato.getText().isEmpty()) {
 
@@ -705,27 +902,137 @@ public class aluguelForm extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_btnBuscarContratoActionPerformed
 
+    private void btnAtualizarListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarListaActionPerformed
+        
+        readListaAlu();
+        
+    }//GEN-LAST:event_btnAtualizarListaActionPerformed
+
+    private void btnBuscarListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarListaActionPerformed
+        
+        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+
+        for (int i = 0; i < modelo.getRowCount(); i++) {
+
+            if (txtBuscarLista.getText().equals(modelo.getValueAt(i, 0).toString())) {
+
+                jTable1.setRowSelectionInterval(i, i);
+
+            }
+
+        }
+        
+    }//GEN-LAST:event_btnBuscarListaActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        
+        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+        String line = modelo.getValueAt(jTable1.getSelectedRow(), 0).toString();
+
+        if (evt.getClickCount() == 2) {
+            
+            Object[] options = {"Aba: Atualizar Contrato", "Aba: Revogar Contrato"};
+            int choice = JOptionPane.showOptionDialog(null, "Para qual aba você deseja ir?", "Escolha!", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, null);
+
+            if (choice == 0) {
+                
+                recebeBuscaAluguel(line, 0);
+                tabContratos.setSelectedIndex(0);
+                btnAtualizarContrato.setEnabled(true);
+                btnContrato.setEnabled(false);
+
+            } else {
+                
+                recebeBuscaAluguel(line, 1);
+                tabContratos.setSelectedIndex(1);
+                btnRevogar.setEnabled(true);
+
+            }
+            
+
+        } else if (evt.getClickCount() == 1) {
+
+            txtBuscarLista.setText(line);
+
+        }
+        
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void btnRevogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRevogarActionPerformed
+        
+        Contrato aluguel = new Contrato();
+        ContratoDAO dao = new ContratoDAO();
+        
+        aluguel.setCodContrato(Integer.parseInt(txtCodRev.getText()));
+        aluguel.setPlacaVei(txtPlacaRev.getText());
+        
+        if (dao.deleteFromDB(aluguel, Integer.parseInt(txtKMNovaRev.getText()), cmbAvariadoRev.getSelectedItem().toString())) {
+            
+            JOptionPane.showMessageDialog(null, "Contrato revogado com sucesso!");
+            limparCampos(1);
+            
+        }
+        
+    }//GEN-LAST:event_btnRevogarActionPerformed
+
+    private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
+        
+        limparCampos(0);
+        
+    }//GEN-LAST:event_btnLimparActionPerformed
+
+    private void btnBuscarRevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarRevActionPerformed
+        
+        String cod = JOptionPane.showInputDialog("Digite o CÓDIGO DE CONTRATO que deseja buscar: ");
+
+        recebeBuscaAluguel(cod, 1);
+        btnRevogar.setEnabled(true);
+
+        if (!txtCodContrato.getText().isEmpty()) {
+
+            btnRevogar.setEnabled(false);
+            
+        }
+        
+    }//GEN-LAST:event_btnBuscarRevActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAtualizarContrato;
+    private javax.swing.JButton btnAtualizarLista;
     private javax.swing.JButton btnBuscarContrato;
+    private javax.swing.JButton btnBuscarLista;
+    private javax.swing.JButton btnBuscarRev;
     private javax.swing.JButton btnContrato;
     private javax.swing.JButton btnLimpar;
+    private javax.swing.JButton btnRevogar;
     private javax.swing.JButton btnSair;
     private javax.swing.JButton btnSelecionarVei;
     private javax.swing.JButton btnSimularValor;
+    private javax.swing.JComboBox<String> cmbAvariadoRev;
     private javax.swing.JComboBox<String> cmbModelo;
     private javax.swing.JComboBox<String> cmbMotorizacao;
     private javax.swing.JComboBox<String> cmbTipo;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lblAvariadoRev;
     private javax.swing.JLabel lblCPF;
+    private javax.swing.JLabel lblCPFRev;
     private javax.swing.JLabel lblCodContrato;
+    private javax.swing.JLabel lblCodRev;
     private javax.swing.JLabel lblContrato;
     private javax.swing.JLabel lblDataFim;
     private javax.swing.JLabel lblDias;
     private javax.swing.JLabel lblFoto;
+    private javax.swing.JLabel lblKMAntigaRev;
+    private javax.swing.JLabel lblKMNova;
     private javax.swing.JLabel lblMotorizacao;
     private javax.swing.JLabel lblNome;
+    private javax.swing.JLabel lblNomeRev;
     private javax.swing.JLabel lblPlaca;
+    private javax.swing.JLabel lblPlacaRev;
     private javax.swing.JLabel lblTipo;
     private javax.swing.JLabel lblValorDesconto;
     private javax.swing.JLabel lblVeiculo;
@@ -733,13 +1040,20 @@ public class aluguelForm extends javax.swing.JInternalFrame {
     private javax.swing.JTabbedPane tabContratos;
     private javax.swing.JPanel tabListContratos;
     private javax.swing.JPanel tabRevogarContrato;
+    private javax.swing.JTextField txtBuscarLista;
     private javax.swing.JTextField txtCPF;
+    private javax.swing.JTextField txtCPFRev;
     private javax.swing.JTextField txtCodContrato;
+    private javax.swing.JTextField txtCodRev;
     private javax.swing.JTextField txtDataFim;
     private javax.swing.JTextField txtDesconto;
     private javax.swing.JTextField txtDias;
+    private javax.swing.JTextField txtKMNovaRev;
+    private javax.swing.JTextField txtKMVelhaRev;
     private javax.swing.JTextField txtNome;
+    private javax.swing.JTextField txtNomeRev;
     private javax.swing.JTextField txtPlaca;
+    private javax.swing.JTextField txtPlacaRev;
     private javax.swing.JTextField txtValor;
     // End of variables declaration//GEN-END:variables
 
@@ -750,33 +1064,119 @@ public class aluguelForm extends javax.swing.JInternalFrame {
 
     }
     
-    public void recebeBuscaAluguel(String cod) {
+        public void readListaAlu() {
+
+        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+        modelo.setNumRows(0);
+        ContratoDAO dao = new ContratoDAO();
+
+        for (Contrato aluguel : dao.listIntoDB()) {
+
+            modelo.addRow(new Object[]{
+                aluguel.getCodContrato(),
+                aluguel.getPlacaVei(),
+                aluguel.getCPFouCNPJCli(),
+                aluguel.getDataFimContrato()});
+
+        }
+
+    }
+    
+    public void recebeBuscaAluguel(String cod, int escolha) {
 
         ContratoDAO dao = new ContratoDAO();
         ClienteDAO daoCli = new ClienteDAO();
-        VeiculoDAO daoVei = new VeiculoDAO();   
+        VeiculoDAO daoVei = new VeiculoDAO(); 
+        String CPF = null;
+        String Placa = null;
         
         for (Contrato aluguel : dao.searchIntoDB(cod)) {
             
-            txtCodContrato.setText(Integer.toString(aluguel.getCodContrato()));
-            txtCPF.setText(aluguel.getCPFouCNPJCli());
-            cmbTipo.setSelectedItem(aluguel.getTipoContrato());
-            txtPlaca.setText(aluguel.getPlacaVei());
-            txtDataFim.setText(aluguel.getDataFimContrato());
-            txtValor.setText(aluguel.getValor_contrato());
-
-        }
-        
-        for (Cliente c : daoCli.searchIntoDB(txtCPF.getText())) {
-
-            txtNome.setText(c.getNomeCli());
-
-        }
-        
-        for (VeiculoUsado vei : daoVei.searchIntoDB(txtPlaca.getText())) {
+            if (escolha == 0) {
             
-            cmbModelo.setSelectedItem(vei.getModelo());
-            cmbMotorizacao.setSelectedItem(vei.getMotorizacao());
+                txtCodContrato.setText(Integer.toString(aluguel.getCodContrato()));
+                txtCPF.setText(aluguel.getCPFouCNPJCli());
+                cmbTipo.setSelectedItem(aluguel.getTipoContrato());
+                txtPlaca.setText(aluguel.getPlacaVei());
+                txtDataFim.setText(aluguel.getDataFimContrato());
+                txtValor.setText(aluguel.getValor_contrato());
+                CPF = txtCPF.getText();
+                Placa = txtPlaca.getText();
+            
+            } else if (escolha == 1) {
+                
+                txtCodRev.setText(Integer.toString(aluguel.getCodContrato()));
+                txtCPFRev.setText(aluguel.getCPFouCNPJCli());
+                txtPlacaRev.setText(aluguel.getPlacaVei());
+                CPF = txtCPFRev.getText();
+                Placa = txtPlacaRev.getText();
+                
+            }
+
+        }
+        
+        for (Cliente c : daoCli.searchIntoDB(CPF)) {
+            
+            if (escolha == 0) {
+                
+                txtNome.setText(c.getNomeCli());
+                
+            } else if (escolha == 1) {
+                
+                txtNomeRev.setText(c.getNomeCli());
+                
+            }
+
+        }
+        
+        for (VeiculoUsado vei : daoVei.searchIntoDB(Placa)) {
+            
+            if (escolha == 0) {
+                
+                cmbModelo.setSelectedItem(vei.getModelo());
+                cmbMotorizacao.setSelectedItem(vei.getMotorizacao());
+                
+            } else if (escolha == 1) {
+                
+                txtKMVelhaRev.setText(Long.toString(vei.getQuilometragem()));
+                cmbAvariadoRev.setSelectedItem(vei.getAvariado());
+                
+            }
+            
+        }
+        
+    }
+    
+    public void limparCampos(int tab) {
+        
+        if (tab == 0) {
+            
+            txtCodContrato.setText(null);
+            txtCPF.setText(null);
+            cmbTipo.setSelectedItem("Selecione:");
+            txtNome.setText(null);
+            txtDias.setText(null);
+            cmbModelo.setSelectedItem("Selecione:");
+            cmbMotorizacao.setSelectedItem("Selecione:");
+            txtPlaca.setText(null);
+            txtDataFim.setText(null);
+            txtValor.setText(null);
+            txtDesconto.setText(null);
+            btnAtualizarContrato.setEnabled(false);
+            btnContrato.setEnabled(false);
+            
+        }
+        
+        else {
+            
+            txtCodRev.setText(null);
+            txtNomeRev.setText(null);
+            txtCPFRev.setText(null);
+            txtPlacaRev.setText(null);
+            txtKMVelhaRev.setText(null);
+            txtKMNovaRev.setText(null);
+            cmbAvariadoRev.setSelectedItem("Selecione:");
+            btnRevogar.setEnabled(false);
             
         }
         

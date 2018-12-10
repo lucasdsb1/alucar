@@ -8,6 +8,7 @@ package View;
 import Classes.Usuario;
 import DAO.UsuarioDAO;
 import javax.swing.JOptionPane;
+import static View.Principal.nomeFunc;
 
 /**
  *
@@ -153,6 +154,7 @@ public class loginForm extends javax.swing.JFrame {
             Principal frame = new Principal();
             frame.setLocationRelativeTo(null);
             frame.setVisible(true);
+            nomeFunc = u.getNome();
             dispose();            
          
         } else {

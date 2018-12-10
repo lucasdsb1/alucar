@@ -395,6 +395,7 @@
             <Component class="javax.swing.JButton" name="btnAtualizarContrato">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Atualizar Contrato"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAtualizarContratoActionPerformed"/>
@@ -415,6 +416,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Limpar Campos"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLimparActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="lblDias">
               <Properties>
@@ -465,15 +469,190 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="454" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="btnBuscarRev" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtNomeRev" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnRevogar" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblAvariadoRev" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cmbAvariadoRev" alignment="0" min="-2" pref="91" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Component id="jLabel7" alignment="0" pref="434" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="lblCodRev" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtCodRev" min="-2" pref="152" max="-2" attributes="0"/>
+                                  <Component id="lblNomeRev" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblCPFRev" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtCPFRev" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="lblKMAntigaRev" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtKMVelhaRev" alignment="0" pref="173" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="txtPlacaRev" alignment="0" pref="214" max="32767" attributes="0"/>
+                                  <Component id="txtKMNovaRev" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="lblPlacaRev" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblKMNova" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="519" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btnBuscarRev" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="lblCodRev" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="txtCodRev" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="lblNomeRev" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="txtNomeRev" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblCPFRev" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblPlacaRev" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txtCPFRev" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtPlacaRev" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblKMAntigaRev" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblKMNova" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txtKMVelhaRev" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtKMNovaRev" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="lblAvariadoRev" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="cmbAvariadoRev" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jLabel7" pref="127" max="32767" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="btnRevogar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
           </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JButton" name="btnBuscarRev">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Buscar Contrato"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuscarRevActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblCodRev">
+              <Properties>
+                <Property name="text" type="java.lang.String" value=" C&#xf3;digo do Contrato:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtCodRev">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblNomeRev">
+              <Properties>
+                <Property name="text" type="java.lang.String" value=" Nome:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtNomeRev">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblCPFRev">
+              <Properties>
+                <Property name="text" type="java.lang.String" value=" CPF ou CNPJ:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtCPFRev">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblKMAntigaRev">
+              <Properties>
+                <Property name="text" type="java.lang.String" value=" KM Atual:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtKMVelhaRev">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtKMNovaRev">
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblKMNova">
+              <Properties>
+                <Property name="text" type="java.lang.String" value=" KM Nova:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblAvariadoRev">
+              <Properties>
+                <Property name="text" type="java.lang.String" value=" Est&#xe1; avariado?"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="cmbAvariadoRev">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="3">
+                    <StringItem index="0" value="Selecione:"/>
+                    <StringItem index="1" value="Sim"/>
+                    <StringItem index="2" value="N&#xe3;o"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnRevogar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Revogar Contrato!"/>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRevogarActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel7">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;Center&gt;Revise todas a condi&#xe7;&#xf5;es com o cliente.&lt;/Center&gt;&#xa;&lt;br&gt;&lt;Center&gt;A a&#xe7;&#xe3;o n&#xe3;o tem retorno.&lt;/br&gt;&lt;/Center&gt;&#xa;&lt;br&gt;&lt;Center&gt;Certifique-se que essa seja realmente a decis&#xe3;o do cliente.&lt;/br&gt;&lt;/Center&gt;&#xa;&lt;br&gt;&lt;Center&gt;N&#xe3;o esque&#xe7;a de atualizar a quilometragem do ve&#xed;culo.&lt;/br&gt;&lt;/Center&gt;&#xa;&lt;br&gt;&lt;Center&gt; Verificar avarias!&lt;/br&gt;&lt;/Center&gt;&#xa;&lt;/html&gt;"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtPlacaRev">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblPlacaRev">
+              <Properties>
+                <Property name="text" type="java.lang.String" value=" Placa:"/>
+              </Properties>
+            </Component>
+          </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="tabListContratos">
           <Constraints>
@@ -487,15 +666,97 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="454" max="32767" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="txtBuscarLista" pref="295" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="btnAtualizarLista" pref="121" max="32767" attributes="0"/>
+                          <Component id="btnBuscarLista" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                      <Component id="jScrollPane1" alignment="0" pref="454" max="32767" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="519" max="32767" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace pref="466" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="btnAtualizarLista" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel1" alignment="1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="btnBuscarLista" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtBuscarLista" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jScrollPane1" min="-2" pref="453" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="74" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
             </DimensionLayout>
           </Layout>
+          <SubComponents>
+            <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTable" name="jTable1">
+                  <Properties>
+                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                      <Table columnCount="4" rowCount="0">
+                        <Column editable="false" title="C&#xf3;digo de Contrato" type="java.lang.Object"/>
+                        <Column editable="false" title="Placa" type="java.lang.Object"/>
+                        <Column editable="false" title="CPF/CNPJ" type="java.lang.Object"/>
+                        <Column editable="false" title="Fim do Contrato" type="java.lang.Object"/>
+                      </Table>
+                    </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTable1MouseClicked"/>
+                  </Events>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Component class="javax.swing.JButton" name="btnAtualizarLista">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Atualizar Lista"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAtualizarListaActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnBuscarLista">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Buscar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuscarListaActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtBuscarLista">
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value=" Digite o c&#xf3;digo do Contrato para busca:"/>
+              </Properties>
+            </Component>
+          </SubComponents>
         </Container>
       </SubComponents>
     </Container>

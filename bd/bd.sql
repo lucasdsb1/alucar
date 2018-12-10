@@ -1,5 +1,8 @@
-create table usuarios (
+create table funcionario (
 id integer auto_increment not null,
+nome varchar(99),
+nivel_acesso int,
+cod_cargo int(30),
 login varchar(30),
 senha varchar(30),
 constraint PK_ID_USUARIOS primary key(id));
@@ -43,5 +46,5 @@ constraint fk_cpf foreign key(cpf) references clientes(cpf),
 constraint fk_tipo foreign key(cod_tipo) references tipo_aluguel(cod_tipo)
 );
 
-alter table veiculo add constraint fk_cod_contrato_vei foreign key(cod_contrato) references aluguel(cod_contrato);
+alter table veiculo add constraint fk_cod_contrato_vei foreign key(cod_contrato) references aluguel(cod_contrato) on delete set null;
 alter table aluguel add constraint uni_placa unique (placa);

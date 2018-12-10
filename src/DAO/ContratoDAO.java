@@ -392,6 +392,91 @@ public class ContratoDAO {
 
         return lista;
     
+    }
     
+    public List<Contrato> listIntoDB() {
+        
+        List<Contrato> aluguel = new ArrayList<>();
+
+        try {
+
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/alucar?serverTimezone=UTC", "root", "usbw");
+            PreparedStatement stmt = con.prepareStatement("select cod_contrato, placa, cpf, fim_contrato from aluguel");
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+
+                Contrato alu = new Contrato();
+
+                alu.setCodContrato(rs.getInt("cod_contrato"));
+                alu.setPlacaVei(rs.getString("placa"));
+                alu.setCPFouCNPJCli(rs.getString("cpf"));
+                alu.setDataFimContrato(rs.getString("fim_contrato"));
+                aluguel.add(alu);
+
+            }
+
+        } catch (Exception e) {
+
+            Object[] options = {"Mostre-me o erro detalhado", "Sair"};
+            int choice = JOptionPane.showOptionDialog(null, "Algo deu errado! Tente novamente mais tarde.", "Erro!", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[1]);
+
+            if (choice == 0) {
+
+                JOptionPane.showMessageDialog(null, e.getMessage());
+
+            } else {
+
+                System.exit(0);
+
+            }
+
+        }
+
+        return aluguel;
+        
+    }
+    
+    public boolean deleteFromDB(Contrato aluguel, long kmnova, String avariado) {
+        
+        boolean check = false;
+        
+        try {
+            
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/alucar?serverTimezone=UTC", "root", "usbw");
+            
+            PreparedStatement stmt = con.prepareStatement("delete from aluguel where cod_contrato = ?");
+            stmt.setInt(1, aluguel.getCodContrato());
+            stmt.execute();            
+            
+            stmt = con.prepareStatement("update veiculo set quilometragem = ?, avariado = ? where placa = ?");
+            stmt.setLong(1, kmnova);
+            stmt.setString(2, avariado);
+            stmt.setString(3, aluguel.getPlacaVei());
+            stmt.execute();
+           
+            con.close();
+            check = true;
+            
+        } catch (Exception e) {
+            
+            Object[] options = {"Mostre-me o erro detalhado", "Sair"};
+            int choice = JOptionPane.showOptionDialog(null, "Algo deu errado! Tente novamente mais tarde.", "Erro!", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[1]);
+
+            if (choice == 0) {
+
+                JOptionPane.showMessageDialog(null, e.getMessage());
+
+            } else {
+
+                System.exit(0);
+
+            }
+            
+        }
+        
+        return check;
     }
 }
