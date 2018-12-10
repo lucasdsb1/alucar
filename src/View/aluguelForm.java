@@ -6,14 +6,22 @@
 package View;
 
 import Classes.Cliente;
+import Classes.Contrato;
 import Classes.ContratoAPP;
-import Classes.ContratoPF;
 import Classes.ContratoPJ;
 import Classes.Veiculo;
+import Classes.VeiculoUsado;
 import DAO.ClienteDAO;
 import DAO.ContratoDAO;
+import DAO.VeiculoDAO;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
 
 /**
@@ -158,6 +166,7 @@ public class aluguelForm extends javax.swing.JInternalFrame {
         });
 
         btnContrato.setText("Concluir Contrato");
+        btnContrato.setEnabled(false);
         btnContrato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnContratoActionPerformed(evt);
@@ -178,7 +187,7 @@ public class aluguelForm extends javax.swing.JInternalFrame {
 
         btnLimpar.setText("Limpar Campos");
 
-        lblDias.setText(" Dias do contrato:");
+        lblDias.setText(" Total de dias:");
 
         btnSelecionarVei.setText("Selecionar o Veículo");
         btnSelecionarVei.addActionListener(new java.awt.event.ActionListener() {
@@ -393,36 +402,56 @@ public class aluguelForm extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_formInternalFrameClosed
 
     private void btnSimularValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimularValorActionPerformed
-     
+        
+        ContratoDAO dao = new ContratoDAO();
+        int dias = Integer.parseInt(txtDias.getText());
+        LocalDate data = LocalDate.now();
+        
+        if (!txtCodContrato.getText().isEmpty()) {
+            
+            for (Contrato aluguel : dao.searchIntoDB(txtCodContrato.getText())) {
+                
+                data = LocalDate.parse(aluguel.getDataFimContrato());
+                
+            }
+            
+        }
+        
         if (cmbTipo.getSelectedItem() == "Selecione:") {
 
             txtDesconto.setText(null);
             lblValorDesconto.setText(" Valor com Desconto:");
 
-        } else if (cmbTipo.getSelectedItem() == "Aplicativo") {
+        } else if (cmbTipo.getSelectedItem().equals("Aplicativo") && !txtDias.getText().isEmpty() && !cmbModelo.getSelectedItem().equals("Selecione:")) {
 
             ContratoAPP aluguel = new ContratoAPP();
             aluguel.setTipoContrato(cmbTipo.getSelectedItem().toString());
             aluguel.setQtdDiasContrato(txtDias.getText());
             txtValor.setText(aluguel.valorContrato(cmbModelo.getSelectedItem().toString()));
             txtDesconto.setText(aluguel.desconto(Double.parseDouble(txtValor.getText())));
+            txtDataFim.setText(data.plusDays(dias).toString());
+            btnContrato.setEnabled(true);
             
 
-        } else if (cmbTipo.getSelectedItem() == "Pessoa Física") {
+        } else if (cmbTipo.getSelectedItem().equals("Pessoa Física") && !txtDias.getText().isEmpty() && !cmbModelo.getSelectedItem().equals("Selecione:")) {
 
-            ContratoPF aluguel = new ContratoPF();
+            Contrato aluguel = new Contrato();
             aluguel.setTipoContrato(cmbTipo.getSelectedItem().toString());
             aluguel.setQtdDiasContrato(txtDias.getText());
             txtValor.setText(aluguel.valorContrato(cmbModelo.getSelectedItem().toString()));
             txtDesconto.setText(aluguel.desconto(Double.parseDouble(txtValor.getText())));
+            txtDataFim.setText(data.plusDays(dias).toString());
+            btnContrato.setEnabled(true);
             
-        } else if (cmbTipo.getSelectedItem() == "Pessoa Júridica") {
+        } else if (cmbTipo.getSelectedItem().equals("Pessoa Júridica") && !txtDias.getText().isEmpty() && !cmbModelo.getSelectedItem().equals("Selecione:")) {
 
             ContratoPJ aluguel = new ContratoPJ();
             aluguel.setTipoContrato(cmbTipo.getSelectedItem().toString());
             aluguel.setQtdDiasContrato(txtDias.getText());
             txtValor.setText(aluguel.valorContrato(cmbModelo.getSelectedItem().toString()));
             txtDesconto.setText(aluguel.desconto(Double.parseDouble(txtValor.getText())));
+            txtDataFim.setText(data.plusDays(dias).toString());
+            btnContrato.setEnabled(true);
 
         }
         
@@ -430,22 +459,22 @@ public class aluguelForm extends javax.swing.JInternalFrame {
 
     private void cmbTipoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbTipoItemStateChanged
 
-        if (cmbTipo.getSelectedItem() == "Selecione:") {
+        if (cmbTipo.getSelectedItem().equals("Selecione:")) {
 
             txtDesconto.setText(null);
             lblValorDesconto.setText(" Valor com Desconto:");
 
-        } else if (cmbTipo.getSelectedItem() == "Aplicativo") {
+        } else if (cmbTipo.getSelectedItem().equals("Aplicativo")) {
 
             lblValorDesconto.setText(" Valor com 15% de Desconto:");
             lblCPF.setText(" CPF ou CNPJ:");
 
-        } else if (cmbTipo.getSelectedItem() == "Pessoa Física") {
+        } else if (cmbTipo.getSelectedItem().equals("Pessoa Física")) {
 
             lblValorDesconto.setText(" Valor com 5% de Desconto:");
             lblCPF.setText(" CPF do cliente:");
 
-        } else if (cmbTipo.getSelectedItem() == "Pessoa Júridica") {
+        } else if (cmbTipo.getSelectedItem().equals("Pessoa Júridica")) {
 
             lblValorDesconto.setText(" Valor com 10% de Desconto:");
             lblCPF.setText(" CNPJ da empresa:");
@@ -533,22 +562,22 @@ public class aluguelForm extends javax.swing.JInternalFrame {
         ContratoDAO dao = new ContratoDAO();
         boolean check = false;
         
-        if (cmbTipo.getSelectedItem() == "Pessoa Física") {
+        if (cmbTipo.getSelectedItem().equals("Pessoa Física")) {
             
-            ContratoPF pf = new ContratoPF();
+            Contrato pf = new Contrato();
         
             pf.setCPFouCNPJCli(txtCPF.getText());
             pf.setTipoContrato(cmbTipo.getSelectedItem().toString());
             pf.setQtdDiasContrato(txtDias.getText());
             pf.setPlacaVei(txtPlaca.getText());
-            pf.setDataFimContrato(txtDataFim.getText());
             pf.setValor_contrato(txtDesconto.getText());
+            pf.setDataFimContrato(txtDataFim.getText());
             
             check = dao.insertIntoDBPF(pf);
             
             txtCodContrato.setText(Integer.toString(pf.getCodContrato()));
             
-        } else if (cmbTipo.getSelectedItem() == "Aplicativo") {
+        } else if (cmbTipo.getSelectedItem().equals("Aplicativo")) {
             
             ContratoAPP app = new ContratoAPP();
         
@@ -556,14 +585,15 @@ public class aluguelForm extends javax.swing.JInternalFrame {
             app.setTipoContrato(cmbTipo.getSelectedItem().toString());
             app.setQtdDiasContrato(txtDias.getText());
             app.setPlacaVei(txtPlaca.getText());
-            app.setDataFimContrato(txtDataFim.getText());
             app.setValor_contrato(txtDesconto.getText());
+            app.setDataFimContrato(txtDataFim.getText());
             
             check = dao.insertIntoDBAPP(app);
             
             txtCodContrato.setText(Integer.toString(app.getCodContrato()));
+            txtDataFim.setText(app.getDataFimContrato());
             
-        } else if (cmbTipo.getSelectedItem() == "Pessoa Júridica") {
+        } else if (cmbTipo.getSelectedItem().equals("Pessoa Júridica")) {
             
             ContratoPJ pj = new ContratoPJ();
         
@@ -571,12 +601,13 @@ public class aluguelForm extends javax.swing.JInternalFrame {
             pj.setTipoContrato(cmbTipo.getSelectedItem().toString());
             pj.setQtdDiasContrato(txtDias.getText());
             pj.setPlacaVei(txtPlaca.getText());
-            pj.setDataFimContrato(txtDataFim.getText());
             pj.setValor_contrato(txtDesconto.getText());
+            pj.setDataFimContrato(txtDataFim.getText());
             
             check = dao.insertIntoDBPJ(pj);
             
             txtCodContrato.setText(Integer.toString(pj.getCodContrato()));
+            txtDataFim.setText(pj.getDataFimContrato());
             
         }
         
@@ -600,10 +631,11 @@ public class aluguelForm extends javax.swing.JInternalFrame {
         ContratoDAO dao = new ContratoDAO();
         boolean check = false;
         
-        if (cmbTipo.getSelectedItem() == "Pessoa Física") {
+        if (cmbTipo.getSelectedItem().equals("Pessoa Física")) {
             
-            ContratoPF pf = new ContratoPF();
-        
+            Contrato pf = new Contrato();
+            
+            pf.setCodContrato(Integer.parseInt(txtCodContrato.getText()));
             pf.setCPFouCNPJCli(txtCPF.getText());
             pf.setTipoContrato(cmbTipo.getSelectedItem().toString());
             pf.setQtdDiasContrato(txtDias.getText());
@@ -611,14 +643,15 @@ public class aluguelForm extends javax.swing.JInternalFrame {
             pf.setDataFimContrato(txtDataFim.getText());
             pf.setValor_contrato(txtDesconto.getText());
             
-            check = dao.insertIntoDBPF(pf);
+            check = dao.alterIntoDBPF(pf);
             
             txtCodContrato.setText(Integer.toString(pf.getCodContrato()));
             
-        } else if (cmbTipo.getSelectedItem() == "Aplicativo") {
+        } else if (cmbTipo.getSelectedItem().equals("Aplicativo")) {
             
             ContratoAPP app = new ContratoAPP();
-        
+            
+            app.setCodContrato(Integer.parseInt(txtCodContrato.getText()));
             app.setCPFouCNPJCli(txtCPF.getText());
             app.setTipoContrato(cmbTipo.getSelectedItem().toString());
             app.setQtdDiasContrato(txtDias.getText());
@@ -626,14 +659,15 @@ public class aluguelForm extends javax.swing.JInternalFrame {
             app.setDataFimContrato(txtDataFim.getText());
             app.setValor_contrato(txtDesconto.getText());
             
-            check = dao.insertIntoDBAPP(app);
+            check = dao.alterIntoDBAPP(app);
             
             txtCodContrato.setText(Integer.toString(app.getCodContrato()));
             
-        } else if (cmbTipo.getSelectedItem() == "Pessoa Júridica") {
+        } else if (cmbTipo.getSelectedItem().equals("Pessoa Júridica")) {
             
             ContratoPJ pj = new ContratoPJ();
-        
+            
+            pj.setCodContrato(Integer.parseInt(txtCodContrato.getText()));
             pj.setCPFouCNPJCli(txtCPF.getText());
             pj.setTipoContrato(cmbTipo.getSelectedItem().toString());
             pj.setQtdDiasContrato(txtDias.getText());
@@ -641,15 +675,15 @@ public class aluguelForm extends javax.swing.JInternalFrame {
             pj.setDataFimContrato(txtDataFim.getText());
             pj.setValor_contrato(txtDesconto.getText());
             
-            check = dao.insertIntoDBPJ(pj);
+            check = dao.alterIntoDBPJ(pj);
             
             txtCodContrato.setText(Integer.toString(pj.getCodContrato()));
             
         }
         
-        if (check ==  true) {
+        if (check == true) {
             
-            JOptionPane.showMessageDialog(null, "Contrato realizado com sucesso!");
+            JOptionPane.showMessageDialog(null, "Contrato atualizado com sucesso!");
                     
         }
         
@@ -719,24 +753,33 @@ public class aluguelForm extends javax.swing.JInternalFrame {
     public void recebeBuscaAluguel(String cod) {
 
         ContratoDAO dao = new ContratoDAO();
-        //Cliente cli = new Cliente();
-        Veiculo vei = new Veiculo();
-
-
-        for (ContratoAPP aluguel : dao.searchIntoDB(cod)) {
-
+        ClienteDAO daoCli = new ClienteDAO();
+        VeiculoDAO daoVei = new VeiculoDAO();   
+        
+        for (Contrato aluguel : dao.searchIntoDB(cod)) {
+            
             txtCodContrato.setText(Integer.toString(aluguel.getCodContrato()));
             txtCPF.setText(aluguel.getCPFouCNPJCli());
             cmbTipo.setSelectedItem(aluguel.getTipoContrato());
-            txtNome.setText(aluguel.getNomeCli());
-            cmbModelo.setSelectedItem(aluguel.getModeloVei());
-            cmbMotorizacao.setSelectedItem(aluguel.getMotorizacaoVei());
             txtPlaca.setText(aluguel.getPlacaVei());
             txtDataFim.setText(aluguel.getDataFimContrato());
             txtValor.setText(aluguel.getValor_contrato());
 
         }
+        
+        for (Cliente c : daoCli.searchIntoDB(txtCPF.getText())) {
 
+            txtNome.setText(c.getNomeCli());
+
+        }
+        
+        for (VeiculoUsado vei : daoVei.searchIntoDB(txtPlaca.getText())) {
+            
+            cmbModelo.setSelectedItem(vei.getModelo());
+            cmbMotorizacao.setSelectedItem(vei.getMotorizacao());
+            
+        }
+        
     }
     
 }

@@ -197,7 +197,7 @@ public class VeiculoDAO implements InterfaceCRUD<VeiculoUsado> {
 
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/alucar?serverTimezone=UTC", "root", "usbw");
-            PreparedStatement stmt = con.prepareStatement("select placa, renavam, anofab, quilometragem, avariado, nome, motorizacao from veiculo where placa = ?");
+            PreparedStatement stmt = con.prepareStatement("select placa, renavam, anofab, quilometragem, avariado, nome, motorizacao, cod_contrato from veiculo where placa = ?");
             stmt.setString(1, placa);
             ResultSet rs = stmt.executeQuery();
 
@@ -212,6 +212,7 @@ public class VeiculoDAO implements InterfaceCRUD<VeiculoUsado> {
                 vei.setAvariado(rs.getString("avariado"));
                 vei.setModelo(rs.getString("nome"));
                 vei.setMotorizacao(rs.getString("motorizacao"));
+                vei.setCod_contrato(rs.getInt("cod_contrato"));
                 veiculo.add(vei);
                 
             }

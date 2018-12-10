@@ -9,7 +9,7 @@ package Classes;
  *
  * @author l_dsb
  */
-public class ContratoAPP extends Contrato {
+public class ContratoAPP extends Contrato implements DescontoContrato {
     
     private String tipoContrato;
     private int cod_tipoContrato;
@@ -35,6 +35,7 @@ public class ContratoAPP extends Contrato {
     /**
      * @return the tipoContrato
      */
+    @Override
     public String getTipoContrato() {
         return tipoContrato;
     }
@@ -42,6 +43,7 @@ public class ContratoAPP extends Contrato {
     /**
      * @param tipoContrato the tipoContrato to set
      */
+    @Override
     public void setTipoContrato(String tipoContrato) {
         this.tipoContrato = tipoContrato;
     }
@@ -49,6 +51,7 @@ public class ContratoAPP extends Contrato {
     /**
      * @return the cod_tipoContrato
      */
+    @Override
     public int getCod_tipoContrato() {
         return cod_tipoContrato;
     }
@@ -56,6 +59,7 @@ public class ContratoAPP extends Contrato {
     /**
      * @param cod_tipoContrato the cod_tipoContrato to set
      */
+    @Override
     public void setCod_tipoContrato(int cod_tipoContrato) {
         this.cod_tipoContrato = cod_tipoContrato;
     }
@@ -63,6 +67,7 @@ public class ContratoAPP extends Contrato {
     /**
      * @return the valor_contrato
      */
+    @Override
     public String getValor_contrato() {
         return valor_contrato;
     }
@@ -70,6 +75,7 @@ public class ContratoAPP extends Contrato {
     /**
      * @param valor_contrato the valor_contrato to set
      */
+    @Override
     public void setValor_contrato(String valor_contrato) {
         this.valor_contrato = valor_contrato;
     }

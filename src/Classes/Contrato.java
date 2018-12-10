@@ -10,70 +10,78 @@ package Classes;
  *
  * @author l_dsb
  */
-public abstract class Contrato{
+public class Contrato implements DescontoContrato {
     
     private int codContrato;
     private String placaVei;
     private String qtdDiasContrato;
     private String CPFouCNPJCli;
     private String dataFimContrato;
-    private String nomeCli;
-    private String modeloVei;
-    private String motorizacaoVei;
+    private String tipoContrato;
+    private int cod_tipoContrato;
+    private String valor_contrato;
     
-    public abstract String desconto(double valor);
+    public Contrato() {
+        
+        this.cod_tipoContrato = 2;
+        this.tipoContrato = "Pessoa Física";
+
+    }
+    
+    @Override
+    public String desconto(double valor) {
+        
+        valor = valor - (valor * 0.05);
+        this.valor_contrato = Double.toString(valor);
+        
+        return valor_contrato;
+        
+    }
     
     public String valorContrato(String modelo) {
         
         int valorContratado;
         String valorFinal = null;
         
-        if (modelo.equals("Palio")) {
-
-            valorContratado = 100 * (Integer.parseInt(this.getQtdDiasContrato()));
-            valorFinal = "" + valorContratado;
-            
-
-        } else if (modelo.equals("Sandero")) {
-
-            valorContratado = 115 * (Integer.parseInt(this.getQtdDiasContrato()));
-            valorFinal = "" + valorContratado;
-
-        } else if (modelo.equals("Uno")) {
-
-            valorContratado = 85 * (Integer.parseInt(this.getQtdDiasContrato()));
-            valorFinal = "" + valorContratado;
-
-        } else if (modelo.equals("Argo")) {
-
-            valorContratado = 125 * (Integer.parseInt(this.getQtdDiasContrato()));
-            valorFinal = "" + valorContratado;
-
-        } else if (modelo.equals("Onix")) {
-
-            valorContratado = 115 * (Integer.parseInt(this.getQtdDiasContrato()));
-            valorFinal = "" + valorContratado;
-
-        } else if (modelo.equals("Virtus")) {
-
-            valorContratado = 130 * (Integer.parseInt(this.getQtdDiasContrato()));
-            valorFinal = "" + valorContratado;
-
-        } else if (modelo.equals("Gol")) {
-
-            valorContratado = 100 * (Integer.parseInt(this.getQtdDiasContrato()));
-            valorFinal = "" + valorContratado;
-
-        } else if (modelo.equals("Fluence")) {
-
-            valorContratado = 150 * (Integer.parseInt(this.getQtdDiasContrato()));
-            valorFinal = "" + valorContratado;
-
-        } else if (modelo.equals("Captur")) {
-
-            valorContratado = 150 * (Integer.parseInt(this.getQtdDiasContrato()));
-            valorFinal = "" + valorContratado;
-
+        switch (modelo) {
+            case "Palio":
+                valorContratado = 100 * (Integer.parseInt(this.getQtdDiasContrato()));
+                valorFinal = "" + valorContratado;
+                break;
+            case "Sandero":
+                valorContratado = 115 * (Integer.parseInt(this.getQtdDiasContrato()));
+                valorFinal = "" + valorContratado;
+                break;
+            case "Uno":
+                valorContratado = 85 * (Integer.parseInt(this.getQtdDiasContrato()));
+                valorFinal = "" + valorContratado;
+                break;
+            case "Argo":
+                valorContratado = 125 * (Integer.parseInt(this.getQtdDiasContrato()));
+                valorFinal = "" + valorContratado;
+                break;
+            case "Onix":
+                valorContratado = 115 * (Integer.parseInt(this.getQtdDiasContrato()));
+                valorFinal = "" + valorContratado;
+                break;
+            case "Virtus":
+                valorContratado = 130 * (Integer.parseInt(this.getQtdDiasContrato()));
+                valorFinal = "" + valorContratado;
+                break;
+            case "Gol":
+                valorContratado = 100 * (Integer.parseInt(this.getQtdDiasContrato()));
+                valorFinal = "" + valorContratado;
+                break;
+            case "Fluence":
+                valorContratado = 150 * (Integer.parseInt(this.getQtdDiasContrato()));
+                valorFinal = "" + valorContratado;
+                break;
+            case "Captur":
+                valorContratado = 150 * (Integer.parseInt(this.getQtdDiasContrato()));
+                valorFinal = "" + valorContratado;
+                break;
+            default:
+                break;
         }
         
         return valorFinal;
@@ -151,45 +159,45 @@ public abstract class Contrato{
     }
 
     /**
-     * @return the nomeCli
+     * @return the tipoContrato
      */
-    public String getNomeCli() {
-        return nomeCli;
+    public String getTipoContrato() {
+        return tipoContrato;
     }
 
     /**
-     * @param nomeCli the nomeCli to set
+     * @return the cod_tipoContrato
      */
-    public void setNomeCli(String nomeCli) {
-        this.nomeCli = nomeCli;
+    public int getCod_tipoContrato() {
+        return cod_tipoContrato;
     }
 
     /**
-     * @return the modeloVei
+     * @return the valor_contrato
      */
-    public String getModeloVei() {
-        return modeloVei;
+    public String getValor_contrato() {
+        return valor_contrato;
     }
 
     /**
-     * @param modeloVei the modeloVei to set
+     * @param tipoContrato the tipoContrato to set
      */
-    public void setModeloVei(String modeloVei) {
-        this.modeloVei = modeloVei;
+    public void setTipoContrato(String tipoContrato) {
+        this.tipoContrato = tipoContrato;
     }
 
     /**
-     * @return the motorizacaoVei
+     * @param cod_tipoContrato the cod_tipoContrato to set
      */
-    public String getMotorizacaoVei() {
-        return motorizacaoVei;
+    public void setCod_tipoContrato(int cod_tipoContrato) {
+        this.cod_tipoContrato = cod_tipoContrato;
     }
 
     /**
-     * @param motorizacaoVei the motorizacaoVei to set
+     * @param valor_contrato the valor_contrato to set
      */
-    public void setMotorizacaoVei(String motorizacaoVei) {
-        this.motorizacaoVei = motorizacaoVei;
+    public void setValor_contrato(String valor_contrato) {
+        this.valor_contrato = valor_contrato;
     }
    
 }

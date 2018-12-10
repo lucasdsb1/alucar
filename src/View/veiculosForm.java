@@ -183,6 +183,8 @@ public class veiculosForm extends javax.swing.JInternalFrame {
 
         lblContrato.setText(" Código de contrato:");
 
+        txtContrato.setEditable(false);
+
         javax.swing.GroupLayout tabVeiculoLayout = new javax.swing.GroupLayout(tabVeiculo);
         tabVeiculo.setLayout(tabVeiculoLayout);
         tabVeiculoLayout.setHorizontalGroup(
@@ -693,6 +695,7 @@ public class veiculosForm extends javax.swing.JInternalFrame {
             cmbMotorizacao.setSelectedItem(v.getMotorizacao());
             cmbAvariado.setSelectedItem(v.getAvariado());
             cmbModelo.setSelectedItem(v.getModelo());
+            txtContrato.setText(Integer.toString(v.getCod_contrato()));
 
         }
 

@@ -20,7 +20,7 @@ import javax.swing.JOptionPane;
  */
 public class ContratoDAO {
     
-    public boolean insertIntoDBPF (ContratoPF aluguel) {
+    public boolean insertIntoDBPF (Contrato aluguel) {
         
         boolean check = false;
         
@@ -185,7 +185,7 @@ public class ContratoDAO {
         
     }
     
-    public boolean alterIntoDBPF (ContratoPF aluguel) {
+    public boolean alterIntoDBPF (Contrato aluguel) {
         
         boolean check = false;
         
@@ -346,16 +346,16 @@ public class ContratoDAO {
         
     }
 
-    public List<ContratoAPP> searchIntoDB(String cod) {
+    public List<Contrato> searchIntoDB(String cod) {
         
-        List<ContratoAPP> lista = new ArrayList<>();
-        ContratoAPP aluguel = new ContratoAPP();
+        List<Contrato> lista = new ArrayList<>();
+        Contrato aluguel = new Contrato();
 
         try {
 
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/alucar?serverTimezone=UTC", "root", "usbw");
-            PreparedStatement stmt = con.prepareStatement("select a.cod_contrato, a.placa, a.cpf, a.fim_contrato, a.cod_tipo, a.valor_contrato, c.nome, v.nome as modelo, v.motorizacao from aluguel as a, clientes as c, veiculo as v where a.cpf = c.cpf and a.placa = v.placa and a.cod_contrato = ?");
+            PreparedStatement stmt = con.prepareStatement("select a.cod_contrato, a.placa, a.cpf, a.fim_contrato, t.nome_tipo, a.valor_contrato, c.nome, v.nome as modelo, v.motorizacao from aluguel as a, clientes as c, veiculo as v, tipo_aluguel as t where a.cpf = c.cpf and a.placa = v.placa and a.cod_tipo = t.cod_tipo and a.cod_contrato = ?");
             stmt.setString(1, cod);
             ResultSet rs = stmt.executeQuery();
 
@@ -365,11 +365,8 @@ public class ContratoDAO {
                 aluguel.setPlacaVei(rs.getString("placa"));
                 aluguel.setCPFouCNPJCli(rs.getString("cpf"));
                 aluguel.setDataFimContrato(rs.getString("fim_contrato"));
-                aluguel.setCod_tipoContrato(rs.getInt("cod_tipo"));
+                aluguel.setTipoContrato(rs.getString("nome_tipo"));
                 aluguel.setValor_contrato(rs.getString("valor_contrato"));
-                aluguel.setNomeCli(rs.getString("nome"));
-                aluguel.setModeloVei(rs.getString("modelo"));
-                aluguel.setMotorizacaoVei(rs.getString("motorizacao"));
                 
                 lista.add(aluguel);
                 
