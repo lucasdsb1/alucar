@@ -27,9 +27,11 @@ public class VeiculoDAO implements InterfaceCRUD<VeiculoUsado> {
 
         try {
 
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/alucar?serverTimezone=UTC", "root", "usbw");
-
+            /*Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/alucar?serverTimezone=UTC", "root", "usbw");*/
+            
+            Connection con = ConnectionFactory.getConnection();
+            
             PreparedStatement stmt = con.prepareStatement("insert into veiculo (placa, renavam, anofab, quilometragem, avariado, nome, motorizacao) values ((?),(?),(?),(?),(?),(?),(?))");
             stmt.setString(1, v.getPlaca());
             stmt.setLong(2, v.getRenavam());
@@ -71,8 +73,10 @@ public class VeiculoDAO implements InterfaceCRUD<VeiculoUsado> {
         
         try {
             
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/alucar?serverTimezone=UTC", "root", "usbw");
+            /*Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/alucar?serverTimezone=UTC", "root", "usbw");*/
+            
+            Connection con = ConnectionFactory.getConnection();
             
             PreparedStatement stmt = con.prepareStatement("update veiculo set anofab = ?, quilometragem = ?, avariado = ?, nome = ?, motorizacao = ? where placa = ?");
             stmt.setString(1, v.getAnoFab());
@@ -113,8 +117,10 @@ public class VeiculoDAO implements InterfaceCRUD<VeiculoUsado> {
         
         try {
             
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/alucar?serverTimezone=UTC", "root", "usbw");
+            /*Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/alucar?serverTimezone=UTC", "root", "usbw");*/
+            
+            Connection con = ConnectionFactory.getConnection();
         
             PreparedStatement stmt = con.prepareStatement("delete from veiculo where placa = ?");
             stmt.setString(1, v.getPlaca());
@@ -150,8 +156,11 @@ public class VeiculoDAO implements InterfaceCRUD<VeiculoUsado> {
 
         try {
 
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/alucar?serverTimezone=UTC", "root", "usbw");
+            /*Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/alucar?serverTimezone=UTC", "root", "usbw");*/
+            
+            Connection con = ConnectionFactory.getConnection();
+            
             PreparedStatement stmt = con.prepareStatement("select nome, placa, motorizacao, cod_contrato from veiculo");
             ResultSet rs = stmt.executeQuery();
 
@@ -195,8 +204,11 @@ public class VeiculoDAO implements InterfaceCRUD<VeiculoUsado> {
 
         try {
 
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/alucar?serverTimezone=UTC", "root", "usbw");
+            /*Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/alucar?serverTimezone=UTC", "root", "usbw");*/
+            
+            Connection con = ConnectionFactory.getConnection();
+            
             PreparedStatement stmt = con.prepareStatement("select placa, renavam, anofab, quilometragem, avariado, nome, motorizacao, cod_contrato from veiculo where placa = ?");
             stmt.setString(1, placa);
             ResultSet rs = stmt.executeQuery();

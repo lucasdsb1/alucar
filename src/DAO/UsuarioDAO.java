@@ -12,8 +12,10 @@ public class UsuarioDAO {
 
         try {
 
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/alucar?serverTimezone=UTC", "root", "usbw");
+            //Class.forName("com.mysql.cj.jdbc.Driver");
+            //Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/alucar?serverTimezone=UTC", "root", "usbw");
+            
+            Connection con = ConnectionFactory.getConnection();
             
             PreparedStatement stmt = con.prepareStatement("SELECT * FROM funcionario WHERE login = ? and senha = ?");
             stmt.setString(1, u.getLogin());

@@ -26,8 +26,10 @@ public class ContratoDAO {
         
         try {
 
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/alucar?serverTimezone=UTC", "root", "usbw");
+            /*Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/alucar?serverTimezone=UTC", "root", "usbw");*/
+            
+            Connection con = ConnectionFactory.getConnection();
             
             PreparedStatement stmt = con.prepareStatement("insert into aluguel (placa, cpf, fim_contrato, cod_tipo, valor_contrato) values ((?),(?),(?),(?),(?))");
             stmt.setString(1, aluguel.getPlacaVei());
@@ -81,8 +83,10 @@ public class ContratoDAO {
         
         try {
 
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/alucar?serverTimezone=UTC", "root", "usbw");
+            /*Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/alucar?serverTimezone=UTC", "root", "usbw");*/
+            
+            Connection con = ConnectionFactory.getConnection();
 
             PreparedStatement stmt = con.prepareStatement("insert into aluguel (placa, cpf, fim_contrato, cod_tipo, valor_contrato) values ((?),(?),(?),(?),(?))");
             stmt.setString(1, aluguel.getPlacaVei());
@@ -136,8 +140,10 @@ public class ContratoDAO {
         
         try {
 
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/alucar?serverTimezone=UTC", "root", "usbw");
+            /*Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/alucar?serverTimezone=UTC", "root", "usbw");*/
+            
+            Connection con = ConnectionFactory.getConnection();
 
             PreparedStatement stmt = con.prepareStatement("insert into aluguel (placa, cpf, fim_contrato, cod_tipo, valor_contrato) values ((?),(?),(?),(?),(?))");
             stmt.setString(1, aluguel.getPlacaVei());
@@ -191,8 +197,10 @@ public class ContratoDAO {
         
         try {
             
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/alucar?serverTimezone=UTC", "root", "usbw");
+            /*Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/alucar?serverTimezone=UTC", "root", "usbw");*/
+            
+            Connection con = ConnectionFactory.getConnection();
             
             PreparedStatement stmt = con.prepareStatement("update aluguel set placa = ?, fim_contrato = ?, valor_contrato = ? where cod_contrato = ?");
             stmt.setString(1, aluguel.getPlacaVei());
@@ -230,8 +238,10 @@ public class ContratoDAO {
         
         try {
             
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/alucar?serverTimezone=UTC", "root", "usbw");
+            /*Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/alucar?serverTimezone=UTC", "root", "usbw");*/
+            
+            Connection con = ConnectionFactory.getConnection();
             
             PreparedStatement stmt = con.prepareStatement("update aluguel set placa = ?, fim_contrato = ?, valor_contrato = ? where cod_contrato = ?");
             stmt.setString(1, aluguel.getPlacaVei());
@@ -269,8 +279,10 @@ public class ContratoDAO {
         
         try {
             
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/alucar?serverTimezone=UTC", "root", "usbw");
+            /*Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/alucar?serverTimezone=UTC", "root", "usbw");*/
+            
+            Connection con = ConnectionFactory.getConnection();
             
             PreparedStatement stmt = con.prepareStatement("update aluguel set placa = ?, fim_contrato = ?, valor_contrato = ? where cod_contrato = ?");
             stmt.setString(1, aluguel.getPlacaVei());
@@ -308,8 +320,11 @@ public class ContratoDAO {
 
         try {
 
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/alucar?serverTimezone=UTC", "root", "usbw");
+            /*Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/alucar?serverTimezone=UTC", "root", "usbw");*/
+            
+            Connection con = ConnectionFactory.getConnection();
+            
             PreparedStatement stmt = con.prepareStatement("select placa from veiculo where motorizacao = ? and nome = ? and cod_contrato is null");
             stmt.setString(1, motorizacao);
             stmt.setString(2, modelo);
@@ -353,8 +368,11 @@ public class ContratoDAO {
 
         try {
 
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/alucar?serverTimezone=UTC", "root", "usbw");
+            /*Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/alucar?serverTimezone=UTC", "root", "usbw");*/
+            
+            Connection con = ConnectionFactory.getConnection();
+            
             PreparedStatement stmt = con.prepareStatement("select a.cod_contrato, a.placa, a.cpf, a.fim_contrato, t.nome_tipo, a.valor_contrato, c.nome, v.nome as modelo, v.motorizacao from aluguel as a, clientes as c, veiculo as v, tipo_aluguel as t where a.cpf = c.cpf and a.placa = v.placa and a.cod_tipo = t.cod_tipo and a.cod_contrato = ?");
             stmt.setString(1, cod);
             ResultSet rs = stmt.executeQuery();
@@ -400,8 +418,11 @@ public class ContratoDAO {
 
         try {
 
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/alucar?serverTimezone=UTC", "root", "usbw");
+            /*Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/alucar?serverTimezone=UTC", "root", "usbw");*/
+            
+            Connection con = ConnectionFactory.getConnection();
+            
             PreparedStatement stmt = con.prepareStatement("select cod_contrato, placa, cpf, fim_contrato from aluguel");
             ResultSet rs = stmt.executeQuery();
 
@@ -444,8 +465,10 @@ public class ContratoDAO {
         
         try {
             
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/alucar?serverTimezone=UTC", "root", "usbw");
+            /*Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3307/alucar?serverTimezone=UTC", "root", "usbw");*/
+            
+            Connection con = ConnectionFactory.getConnection();
             
             PreparedStatement stmt = con.prepareStatement("delete from aluguel where cod_contrato = ?");
             stmt.setInt(1, aluguel.getCodContrato());

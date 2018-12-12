@@ -368,6 +368,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtValor">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblContrato">
               <Properties>
@@ -386,6 +389,7 @@
             <Component class="javax.swing.JButton" name="btnContrato">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Concluir Contrato"/>
+                <Property name="toolTipText" type="java.lang.String" value="Clique em &quot;Simular Valores&quot; para habilitar este bot&#xe3;o."/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
@@ -446,6 +450,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtDataFim">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="btnSair">
               <Properties>

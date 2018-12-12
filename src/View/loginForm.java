@@ -41,6 +41,7 @@ public class loginForm extends javax.swing.JFrame {
         lblLogin = new javax.swing.JLabel();
         txtSenha = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("AluCar");
@@ -65,6 +66,8 @@ public class loginForm extends javax.swing.JFrame {
             }
         });
 
+        txtUsuario.setText("ldsb1@ifal.edu.br");
+
         lblUsuario.setText("Usuário:");
 
         lblSenha.setText("Senha:");
@@ -72,9 +75,18 @@ public class loginForm extends javax.swing.JFrame {
         lblLogin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblLogin.setText(".::: PAINEL DE LOGIN ALUCAR :::.");
 
+        txtSenha.setText("1");
+
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/__user_login_icon_307830.png"))); // NOI18N
         jLabel1.setText("<html>\nPowered by LC Soft LTDA.\n<br>All rights reserved. ©</br>\n<br>ldsb1@ifal.edu.br</br>\n<br>cleidon.vsi@gmail.com</br>\n</html>");
+
+        jButton1.setText("Configurar BD");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -91,6 +103,8 @@ public class loginForm extends javax.swing.JFrame {
                             .addComponent(lblLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jButton1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnSair)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnEntrar))
@@ -124,7 +138,8 @@ public class loginForm extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSair)
-                    .addComponent(btnEntrar))
+                    .addComponent(btnEntrar)
+                    .addComponent(jButton1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -169,6 +184,14 @@ public class loginForm extends javax.swing.JFrame {
         
     }//GEN-LAST:event_formWindowActivated
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        configBDForm frame = new configBDForm();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -204,6 +227,7 @@ public class loginForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEntrar;
     private javax.swing.JButton btnSair;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblLogin;
     private javax.swing.JLabel lblSenha;

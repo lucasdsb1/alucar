@@ -175,6 +175,8 @@ public class aluguelForm extends javax.swing.JInternalFrame {
 
         lblTipo.setText(" Tipo de Contrato:");
 
+        txtValor.setEditable(false);
+
         lblContrato.setText(" Valor do Contrato:");
 
         btnSimularValor.setText("Simular Valores");
@@ -186,6 +188,7 @@ public class aluguelForm extends javax.swing.JInternalFrame {
         });
 
         btnContrato.setText("Concluir Contrato");
+        btnContrato.setToolTipText("Clique em \"Simular Valores\" para habilitar este botão.");
         btnContrato.setEnabled(false);
         btnContrato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -225,6 +228,8 @@ public class aluguelForm extends javax.swing.JInternalFrame {
         lblFoto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         lblDataFim.setText(" Data fim do Contrato:");
+
+        txtDataFim.setEditable(false);
 
         btnSair.setText("Sair");
         btnSair.addActionListener(new java.awt.event.ActionListener() {
