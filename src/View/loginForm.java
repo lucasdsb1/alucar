@@ -9,6 +9,7 @@ import Classes.Usuario;
 import DAO.UsuarioDAO;
 import javax.swing.JOptionPane;
 import static View.Principal.nomeFunc;
+import static View.Principal.emailFunc;
 
 /**
  *
@@ -64,8 +65,6 @@ public class loginForm extends javax.swing.JFrame {
             }
         });
 
-        txtUsuario.setText("lucas");
-
         lblUsuario.setText("Usuário:");
 
         lblSenha.setText("Senha:");
@@ -73,11 +72,9 @@ public class loginForm extends javax.swing.JFrame {
         lblLogin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblLogin.setText(".::: PAINEL DE LOGIN ALUCAR :::.");
 
-        txtSenha.setText("1");
-
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/__user_login_icon_307830.png"))); // NOI18N
-        jLabel1.setText("<html>\nPowered by LC Soft LTDA.\n<br>All rights reserved. ©</br>\n<br>Version 0.2.1 DEVELOPER ALPHA</br>\n<br>ldsb1@ifal.edu.br</br>\n<br>cleidon.vsi@gmail.com</br>\n</html>");
+        jLabel1.setText("<html>\nPowered by LC Soft LTDA.\n<br>All rights reserved. ©</br>\n<br>ldsb1@ifal.edu.br</br>\n<br>cleidon.vsi@gmail.com</br>\n</html>");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -155,6 +152,7 @@ public class loginForm extends javax.swing.JFrame {
             frame.setLocationRelativeTo(null);
             frame.setVisible(true);
             nomeFunc = u.getNome();
+            emailFunc = u.getLogin();
             dispose();            
          
         } else {

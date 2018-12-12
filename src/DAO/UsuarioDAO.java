@@ -24,6 +24,7 @@ public class UsuarioDAO {
             if (rs.next()) {
                 
                 u.setNome(rs.getString("nome"));
+                u.setLogin(rs.getString("login"));
                 check = true;
             }
 

@@ -24,6 +24,7 @@ public class Principal extends javax.swing.JFrame {
     }
     
     public static String nomeFunc = null;
+    public static String emailFunc = null;
     
     //public static boolean block = false;
     
@@ -42,8 +43,6 @@ public class Principal extends javax.swing.JFrame {
         btnAluguel = new javax.swing.JButton();
         btnCadCli = new javax.swing.JButton();
         btnSair = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        lblNomeFunc = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         admMenu = new javax.swing.JMenu();
         cadUsuMenuItem = new javax.swing.JMenuItem();
@@ -54,11 +53,6 @@ public class Principal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("AluCar");
         setMinimumSize(new java.awt.Dimension(800, 700));
-        addWindowStateListener(new java.awt.event.WindowStateListener() {
-            public void windowStateChanged(java.awt.event.WindowEvent evt) {
-                formWindowStateChanged(evt);
-            }
-        });
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -145,29 +139,8 @@ public class Principal extends javax.swing.JFrame {
         desktopPane.add(internalProcedimentos);
         internalProcedimentos.setBounds(20, 20, 190, 280);
 
-        lblNomeFunc.setText("jLabel1");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblNomeFunc)
-                .addContainerGap(956, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblNomeFunc)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        desktopPane.add(jPanel1);
-        jPanel1.setBounds(0, 650, 1000, 30);
-
         admMenu.setText("Administrador");
+        admMenu.setEnabled(false);
 
         cadUsuMenuItem.setText("CRUD Usuario");
         admMenu.add(cadUsuMenuItem);
@@ -176,6 +149,7 @@ public class Principal extends javax.swing.JFrame {
 
         suporteMenu.setMnemonic('s');
         suporteMenu.setText("Suporte");
+        suporteMenu.setEnabled(false);
 
         chamarSuportetMenuItem.setText("Chamar Suporte");
         suporteMenu.add(chamarSuportetMenuItem);
@@ -242,16 +216,6 @@ public class Principal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnCadCliActionPerformed
 
-    private void formWindowStateChanged(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowStateChanged
-       
-        /*if (evt.getNewState() != 7) {
-  
-            setExtendedState(MAXIMIZED_BOTH);
-
-        }*/
-        
-    }//GEN-LAST:event_formWindowStateChanged
-
     private void btnAluguelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAluguelActionPerformed
         
         if (instanciaContratos == false) {
@@ -268,7 +232,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         
-        lblNomeFunc.setText("Seja bem vindo, " + nomeFunc + "!");
+        this.setTitle("AluCar | Usuário utilizador: " + nomeFunc + " | Email: " + emailFunc);
         
     }//GEN-LAST:event_formWindowOpened
 
@@ -318,8 +282,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem chamarSuportetMenuItem;
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JInternalFrame internalProcedimentos;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lblNomeFunc;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenu suporteMenu;
     // End of variables declaration//GEN-END:variables

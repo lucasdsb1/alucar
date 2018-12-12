@@ -676,7 +676,7 @@ public class veiculosForm extends javax.swing.JInternalFrame {
                 v.getPlaca(),
                 v.getMotorizacao(),
                 v.getCod_contrato()});
-
+            
         }
 
     }
@@ -684,7 +684,6 @@ public class veiculosForm extends javax.swing.JInternalFrame {
     public void recebeBuscaVei(String Placa) {
 
         VeiculoDAO dao = new VeiculoDAO();
-
 
         for (VeiculoUsado v : dao.searchIntoDB(Placa)) {
 
